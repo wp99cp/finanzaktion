@@ -1,0 +1,66 @@
+.page-container
+  display: grid
+  height: 100%
+  grid-template-rows: 100px auto 175px
+
+h1
+  width: 100%
+  text-align: center
+  line-height: 100px
+  margin: 0
+
+.material-list
+  overflow-y: scroll
+  width: 80%
+  margin: 0 auto 20px auto
+  display: block
+
+  td, tr
+    text-align: center
+    background-color: #e8ebef
+    margin: 2.5px
+    height: 25px
+    line-height: 25px
+    width: 100%
+
+    .amount
+      padding: 0 10px
+      width: 0
+
+  td:last-child, th:last-child
+    text-align: left
+    padding-left: 5px
+    width: 100%
+
+.actions
+  display: grid
+  width: 80%
+  margin: 0 auto
+  display: grid
+  grid-template: "scann" "zurück"
+  height: 130px
+
+  span
+    text-align: center
+    padding: 20px
+    color: #000000
+    border-radius: 5px
+    font-weight: 700
+    margin: 5px
+
+  #back-action
+    background-color: #d90404cc
+    border: 2px solid #ca0505cc
+    padding: 10px 20px
+    grid-area: zurück
+    color: white
+
+
+  #scan-action
+    background-color: #b1d62cad
+    border: 2px solid #99BF0F
+    grid-area: scann
+
+
+
+
