@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyBX19LZBEONnPnrWKNz3lkELjAIxQQjgY4",
-    authDomain: "matraum-app.firebaseapp.com",
-    databaseURL: "https://matraum-app.firebaseio.com",
-    projectId: "matraum-app",
-    storageBucket: "matraum-app.appspot.com",
-    messagingSenderId: "928613691150",
-    appId: "1:928613691150:web:d461dab8baadd12839315f"
+    apiKey: 'AIzaSyDi24JB1bcS-HiZfH1nCWqSssME5N49un8',
+    authDomain: 'finanzaktion-dd819.firebaseapp.com',
+    databaseURL: 'https://finanzaktion-dd819.firebaseio.com',
+    projectId: 'finanzaktion-dd819',
+    storageBucket: 'finanzaktion-dd819.appspot.com',
+    messagingSenderId: '828090653137',
+    appId: '1:828090653137:web:8394efed76f9443c6ae8f0'
   }
 };
 

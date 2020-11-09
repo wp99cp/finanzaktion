@@ -5,6 +5,7 @@ import {OverviewPageComponent} from './pages/overview-page/overview-page.compone
 import {MaterialListPageComponent} from './pages/material-list-page/material-list-page.component';
 import {ScanPageComponent} from './pages/scan-page/scan-page.component';
 import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
+import {RouteFinderComponent} from "./pages/route-finder/route-finder.component";
 
 const routes: Routes = [
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'overview-page',
     component: OverviewPageComponent
+  },
+  {
+    path: 'route-erfassen',
+    component: RouteFinderComponent
   },
   {
     path: 'material/:stufe',
