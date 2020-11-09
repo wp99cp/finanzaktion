@@ -1,9 +1,5 @@
-# matraum_app
+# Finanzaktion 2020
 
-Die Matraum App des Cevi Züri 11 erlaubt es Material direkt über das Smartphone zu verwalten.
-Hierzu kann ein QR Code gescannt werden und anschliessend das Material abgebucht werden.
+Dieses Repository beinhaltet die Webseite für die Finanzaktion 2020. Im Vorfeld unserer Aktionswoche sammeln die TNs und Leiter Sponsoren, diese spenden einen kleinen Betrag pro zurückgelegter km mit dem Velo in der Aktionswoche.
 
-
-## Über dieses Projekt
-
-Dieses Projekt wurde im Rahmen der Vertiefungsarbeit von Marc Bachmann v/o Taifun realisiert. Die technische Umsetzung erfolgt durch Cyrill Püntener v/o JPG.
+Die Webseite erlaubt es Sponsoren zu verwalten/erfassen. Ausserdem können die Teilnehmenden Routen über Google Maps erfassen und Messen.
