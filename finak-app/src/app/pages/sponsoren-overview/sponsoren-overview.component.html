@@ -1,1 +1,26 @@
-<p>sponsoren-overview works!</p>
+<div class="centered">
+
+  <span class="page-title">Sponsoren</span>
+
+  <h1>Meine Sponsoren.</h1>
+
+  <article *ngIf="(sponsoren | async) as sponsoren  else loadingUserSettings">
+
+    <div *ngFor="let sponsor of sponsoren">
+
+      <span> {{sponsor.first_name}} </span>
+      <span> {{sponsor.last_name}} </span>
+      <span> {{sponsor.amount}} </span>
+
+    </div>
+
+    <p><a routerLink="erfassen">Sponsor erfassen</a></p>
+
+  </article>
+
+  <!-- Loading Animation -->
+  <ng-template #loadingUserSettings>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </ng-template>
+
+</div>

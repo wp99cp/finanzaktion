@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {auth} from 'firebase/app';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -10,7 +11,11 @@ import {Router} from '@angular/router';
 })
 export class SignInPageComponent implements OnInit {
 
-  constructor(public fireAuth: AngularFireAuth, private router: Router) {
+  constructor(
+    public fireAuth: AngularFireAuth,
+    private router: Router,
+    private location: Location,
+  ) {
   }
 
   ngOnInit(): void {
@@ -20,7 +25,7 @@ export class SignInPageComponent implements OnInit {
       if (user === null)
         return;
 
-      this.router.navigate(['/overview-page']);
+      this.router.navigate(['/app/mitmachen']);
 
 
     });
@@ -29,6 +34,7 @@ export class SignInPageComponent implements OnInit {
 
   signIn(): void {
 
+    this.location.replaceState('app/oauth-callback');
 
     this.fireAuth.signInWithRedirect(new auth.GoogleAuthProvider())
     this.fireAuth.currentUser.then((user) => {

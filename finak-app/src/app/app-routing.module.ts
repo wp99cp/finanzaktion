@@ -9,6 +9,8 @@ import {SponsorenOverviewComponent} from './pages/sponsoren-overview/sponsoren-o
 import {SponsorenErfassenComponent} from './pages/sponsoren-erfassen/sponsoren-erfassen.component';
 import {VeloRouteSinaiComponent} from './page/velo-route-sinai/velo-route-sinai.component';
 import {KontoSettingsComponent} from './page/konto-settings/konto-settings.component';
+import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
+import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.component';
 
 const routes: Routes = [
 
@@ -23,41 +25,58 @@ const routes: Routes = [
   },
 
   {
-    path: 'mitmachen',
+    path: 'app/mitmachen',
     component: OverviewPageComponent
   },
 
   {
-    path: 'app/routen',
+    path: 'app/:partId/mitmachen',
+    component: OverviewPageComponent
+  },
+  {
+    path: 'app/oauth-callback',
+    component: OauthCallbackComponent
+  },
+
+  {
+    path: 'app/:partId/routen',
     component: RoutenOverviewComponent
   },
 
   {
-    path: 'app/routen/erfassen',
+    path: 'app/:partId/routen/erfassen',
     component: RouteFinderComponent
   },
 
   {
-    path: 'app/sponsoren',
+    path: 'app/:partId/sponsoren',
     component: SponsorenOverviewComponent
   },
 
   {
-    path: 'app/sponsoren/erfassen',
+    path: 'app/:partId/sponsoren/erfassen',
+    component: SponsorenErfassenComponent
+  },
+
+  {
+    path: 'app/:partId/sponsoren/erfassen/:id',
     component: SponsorenErfassenComponent
   },
 
   {
     path: 'beispiele/sinai',
     component: VeloRouteSinaiComponent
-  }
-
-  ,
+  },
 
   {
     path: 'app/settings',
     component: KontoSettingsComponent
-  }
+  },
+
+  {
+    path: 'app/anmelden',
+    component: SignInPageComponent
+  },
 
 ];
 

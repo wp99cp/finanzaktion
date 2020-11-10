@@ -1,19 +1,39 @@
-<div class="page-container">
+<div class="centered">
+
+  <span class="page-title"> Finanzaktion 2020</span>
 
   <h1>Ich mache mit!</h1>
 
   <p> Info zu Teilnahme an der Finak 2020...</p>
 
-  <!-- TODO: Check if signed in -->
 
-  <!-- TODO: Mehrere TNs-->
-  <p>Mehrere Kindern: </p>
-  <p>Erfasse Sponsoren für mehrere Kindern...</p>
-
-  <!-- If signed in: -->
-  <div class="stufen-overview">
-    <span routerLink="/app/routen">Route Erfassen</span>
-    <span routerLink="/app/sponsoren">Sponsor Erfassen</span>
+  <div class="stufen-overview" *ngIf="!(isSignedIn() | async ) else linkToLogInPage">
+    <span routerLink="/app/{{partID}}/routen">Route Erfassen</span>
+    <span routerLink="/app/{{partID}}/sponsoren">Sponsor Erfassen</span>
   </div>
+
+  <ng-template #linkToLogInPage>
+    <p><a routerLink="/app/anmelden"> Anmelden und loslegen!</a></p>
+  </ng-template>
+
+  <h2>Häufige Fragen</h2>
+  <p>Hier findest du Antworten zu den häufigsten Fragen. Bei weiteren Fragen darfst du dich gerne ans Finak-Team
+    wenden.</p>
+
+  <h3>Wir möchten Sponsoren und Routen für mehrere Kinder erfassen?</h3>
+  <p>Dies ist natürlich möglich. Klicke hierzu im Menu auf Einstellungen. Dort kannst du die Option mehrere Kinder
+    aktivieren und anschliessend die Sponsoren und Routen getrennt für jedes Kind erfassen.</p>
+
+  <h3>Meine Route wird nicht wie gewünscht eingezeichnet?</h3>
+  <p>Du kannst deine Route anpassen, in dem du die blaue Linie per Drag&Drop verschiebst. Zusätzlich kannst du auch die
+    Start und Zielpunkte verschieben. Falls Google-Maps dein Weg (z.B. Waldwege) nicht kennt, kannst du die Distanz auch
+    manuell Erfassen/Bearbeiten.</p>
+
+  <h3>Wie viele KM werden insgesamt zurückgelegt?</h3>
+  <p>Wir führen die Aktion zum ersten mal in dieser Form durch, daher ist es schwer einen Erwartungswert anzugeben.
+    Überlege für dich, wie viele KM du in einer Woche normalerweise zurücklegst. </p>
+
+  <h3>Sind Fix-Betrag Spenden möglich?</h3>
+  <p>Ja natürlich, klicke beim Eintragen des Sponsors auf das Feld "Fixer Betrag".</p>
 
 </div>
