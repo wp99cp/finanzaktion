@@ -10,9 +10,9 @@ import {Subscription} from 'rxjs';
 })
 export class OverviewPageComponent implements OnInit, OnDestroy {
 
+  public isSignedIn = false;
   private routeSub: Subscription;
   private partID = undefined;
-  public isSignedIn = false;
 
   constructor(
     public fireAuth: AngularFireAuth,
@@ -21,27 +21,29 @@ export class OverviewPageComponent implements OnInit, OnDestroy {
 
     this.fireAuth.authState.subscribe(user => {
       this.isSignedIn = (user !== null);
+
+      if (this.isSignedIn) {
+
+        this.routeSub = this.route.params.subscribe(params => {
+
+          this.partID = params.partId;
+
+          if (!this.partID) {
+
+            this.router.navigate(['app/register']);
+
+          }
+
+        });
+      }
+
     });
 
   }
 
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
 
-    if (!this.isSignedIn) {
-
-      this.routeSub = this.route.params.subscribe(params => {
-
-        this.partID = params.partId;
-
-        if (!this.partID) {
-
-          this.router.navigate(['app/register']);
-
-        }
-
-      });
-    }
 
   }
 

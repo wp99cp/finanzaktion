@@ -1,3 +1,6 @@
+
+<h1>Neuer Sponsor erfassen</h1>
+
 <div class="sponsor-form">
 
   <mat-form-field appearance="fill">
@@ -71,7 +74,8 @@
 
   <br>
 
-  <button (click)="saveSponsor()" routerLink="/app/{{partId}}/sponsoren">Sponsor Speichern</button>
+  <button mat-raised-button class="add-button" (click)="saveSponsor()" routerLink="/app/{{partId}}/sponsoren">Sponsor Speichern</button>
+  <button mat-raised-button class="add-button" color="warn" routerLink="/app/{{partId}}/sponsoren">Abbrechen</button>
 
 </div>
 
