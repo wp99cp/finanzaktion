@@ -37,6 +37,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { RegisterParticipantComponent } from './pages/register-participant/register-participant.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -59,25 +60,26 @@ import { RegisterParticipantComponent } from './pages/register-participant/regis
     OauthCallbackComponent,
     RegisterParticipantComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'Matraum App'),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatSlideToggleModule,
-    MatProgressBarModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCheckboxModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        AngularFireModule.initializeApp(environment.firebaseConfig, 'Matraum App'),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        MatDialogModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatSlideToggleModule,
+        MatProgressBarModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatButtonModule
+    ],
   providers: [
     AngularFirestore,
     AngularFireAuth,

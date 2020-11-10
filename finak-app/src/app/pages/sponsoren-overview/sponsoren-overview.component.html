@@ -6,7 +6,7 @@
 
   <article *ngIf="(sponsoren | async) as sponsoren  else loadingUserSettings">
 
-    <div *ngFor="let sponsor of sponsoren" routerLink="erfassen/{{sponsor.id}}">
+    <div class="sponsor" *ngFor="let sponsor of sponsoren" routerLink="erfassen/{{sponsor.id}}">
 
       <span> {{sponsor.first_name}} </span>
       <span> {{sponsor.last_name}} </span>
@@ -14,7 +14,10 @@
 
     </div>
 
-    <p><a routerLink="erfassen">Sponsor erfassen</a></p>
+    <i>Klicke auf einen Sponsor, um ihn zu bearbeiten.</i>
+    <br>
+    <br>
+    <p><button class="add-button" mat-raised-button routerLink="erfassen">Neuer Sponsor erfassen</button></p>
 
   </article>
 
@@ -23,7 +26,11 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
 
-  <p><a routerLink="../mitmachen">Zurück zur Übersicht</a></p>
+  <br>
+  <br>
 
+  <h3>Eine Velostrecke erfassen</h3>
+  <p>Sobald die Aktionswoche gestartet ist, kannst du hier deine Velo-Strecken eintragen: <br> <a routerLink="../routen">Velostrecken
+    eintragen</a></p>
 
 </div>
