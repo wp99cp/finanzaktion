@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 // import {} from 'googlemaps';
 // @ts-ignore
-
 import {} from 'googlemaps';
 
 import {DatabaseServiceService} from '../../services/database-service.service';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
 import MapTypeStyle = google.maps.MapTypeStyle;
 import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
@@ -18,7 +19,7 @@ import DirectionsRenderer = google.maps.DirectionsRenderer;
   templateUrl: './route-finder.component.html',
   styleUrls: ['./route-finder.component.sass']
 })
-export class RouteFinderComponent implements OnInit {
+export class RouteFinderComponent implements OnInit, OnDestroy {
 
 
   private totalDistance = 0;
@@ -47,8 +48,23 @@ export class RouteFinderComponent implements OnInit {
       ]
     }
   ];
+  private routeSubst: Subscription;
+  private partId: any;
 
-  constructor(private dbService: DatabaseServiceService) {
+  constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
+
+
+    this.routeSubst = this.route.params.subscribe(params => {
+      this.partId = params.partId;
+    });
+
+  }
+
+  ngOnDestroy(): void {
+
+    if (this.routeSubst)
+      this.routeSubst.unsubscribe();
+
   }
 
   ngOnInit(): void {
@@ -147,8 +163,10 @@ export class RouteFinderComponent implements OnInit {
     console.log('Save to my account: ' + this.totalDistance);
 
     const data = {
-      access: {uid: 'owner'},
-      length: this.totalDistance
+      route_of: this.partId,
+      length: this.totalDistance,
+      origin: (document.getElementById('start') as HTMLInputElement).value,
+      destination: (document.getElementById('end') as HTMLInputElement).value,
     };
 
     this.dbService.createDocument('routes', data).then(r => console.log(r));

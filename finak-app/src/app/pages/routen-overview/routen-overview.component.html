@@ -3,8 +3,25 @@
 
   <h1> Meine Routen</h1>
 
-  <p>List with routes</p>
+  <article *ngIf="(routen | async) as routen  else loadingUserSettings">
 
-  <p><a routerLink="erfassen"> Neue Route Erfassen</a></p>
+    <div *ngFor="let route of routen" routerLink="erfassen/{{route.id}}">
+
+      <span> {{route.origin}} </span>
+      <span> {{route.destination}} </span>
+      <span> {{route.length}} </span>
+
+
+    </div>
+
+    <p><a routerLink="erfassen">Route erfassen</a></p>
+
+  </article>
+
+  <!-- Loading Animation -->
+  <ng-template #loadingUserSettings>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </ng-template>
+
 
 </div>

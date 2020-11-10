@@ -76,7 +76,6 @@ export class SponsorenErfassenComponent implements OnInit, OnDestroy {
   saveSponsor() {
 
     const data = {
-      access: {uid: 'owner'},
       first_name: this.firstName.value,
       last_name: this.lastName.value,
       is_fixed_amount: this.isFixedAmount.value,

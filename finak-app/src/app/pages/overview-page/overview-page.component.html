@@ -7,7 +7,7 @@
   <p> Info zu Teilnahme an der Finak 2020...</p>
 
 
-  <div class="stufen-overview" *ngIf="!(isSignedIn() | async ) else linkToLogInPage">
+  <div class="stufen-overview" *ngIf="isSignedIn else linkToLogInPage">
     <span routerLink="/app/{{partID}}/routen">Route Erfassen</span>
     <span routerLink="/app/{{partID}}/sponsoren">Sponsor Erfassen</span>
   </div>
