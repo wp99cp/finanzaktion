@@ -7,7 +7,8 @@ import { TemplateHeaderComponent } from './_template/template-header/template-he
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'eMeal';
+
+  title = 'Finak';
 
   /** wird bei jedem Seitenwechsel ausgeführt */
   public onActivate(event): void {
@@ -20,6 +21,10 @@ export class AppComponent {
         window.clearInterval(scrollToTop);
       }
     }, 16);
+
+
+    // TODO: check sign in status!!!
+
   }
 
   public closeMenu(): void {

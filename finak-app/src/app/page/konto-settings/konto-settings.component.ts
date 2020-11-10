@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DatabaseServiceService} from '../../services/database-service.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-konto-settings',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KontoSettingsComponent implements OnInit {
 
-  constructor() { }
+  public userDataForm: FormGroup;
+  public user: Observable<any>;
 
-  ngOnInit(): void {
+  constructor(private dbService: DatabaseServiceService, formBuilder: FormBuilder, public fireAuth: AngularFireAuth) {
+
+    this.user = fireAuth.user;
+
+    this.userDataForm = formBuilder.group({
+      displayName: '',
+      visibility: 'hidden' });
+
+
   }
 
+  ngOnInit(): void {
+
+
+  }
+
+  updateUserData() {
+
+  }
+
+  visibilityChanged(value: string) {
+
+  }
 }

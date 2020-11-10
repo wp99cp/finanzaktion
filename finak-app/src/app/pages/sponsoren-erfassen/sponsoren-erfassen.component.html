@@ -1,1 +1,77 @@
-<p>sponsoren-erfassen works!</p>
+<div class="sponsor-form">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Vorname</mat-label>
+    <input [formControl]="firstName" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nachname</mat-label>
+    <input [formControl]="lastName"  required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Adresse</mat-label>
+    <input [formControl]="address" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>PLZ</mat-label>
+    <input [formControl]="ZIPCode" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ort</mat-label>
+    <input [formControl]="city" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+  <mat-checkbox [formControl]="isFixedAmount" >Fixbetrag verwenden</mat-checkbox>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label *ngIf="isFixedAmount.value">Betrag in CHF</mat-label>
+    <mat-label *ngIf="!isFixedAmount.value">Betrag in CHF/km</mat-label>
+    <input [formControl]="amount" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label> Zustellungsart</mat-label>
+    <mat-select [formControl]="deliveryMethod" required="true">
+      <mat-option value="mail">per Mail (direkt)</mat-option>
+      <mat-option value="post_direct">per Post (direkt)</mat-option>
+      <mat-option value="post_participant">per Post (an mich)</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Mailadresse Sponsor</mat-label>
+    <input [formControl]="email" matInput/>
+    <mat-error *ngIf="email.invalid">{{getErrorMessageMail()}}</mat-error>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Bemerkung</mat-label>
+    <textarea [formControl]="notes" matInput></textarea>
+  </mat-form-field>
+
+  <br>
+
+  <button (click)="saveSponsor()" routerLink="/app/{{partId}}/sponsoren">Sponsor Speichern</button>
+
+</div>
+

@@ -29,6 +29,13 @@ import { SponsorenOverviewComponent } from './pages/sponsoren-overview/sponsoren
 import { SponsorenErfassenComponent } from './pages/sponsoren-erfassen/sponsoren-erfassen.component';
 import { VeloRouteSinaiComponent } from './page/velo-route-sinai/velo-route-sinai.component';
 import { KontoSettingsComponent } from './page/konto-settings/konto-settings.component';
+import { OauthCallbackComponent } from './page/oauth-callback/oauth-callback.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -47,7 +54,8 @@ import { KontoSettingsComponent } from './page/konto-settings/konto-settings.com
     SponsorenOverviewComponent,
     SponsorenErfassenComponent,
     VeloRouteSinaiComponent,
-    KontoSettingsComponent
+    KontoSettingsComponent,
+    OauthCallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +68,13 @@ import { KontoSettingsComponent } from './page/konto-settings/konto-settings.com
     BrowserAnimationsModule,
     MatIconModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [
     AngularFirestore,
@@ -68,6 +82,7 @@ import { KontoSettingsComponent } from './page/konto-settings/konto-settings.com
     StockService,
     WebcamService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[ MatFormFieldModule, MatInputModule]
 })
 export class AppModule { }

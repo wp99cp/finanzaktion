@@ -1,1 +1,46 @@
-<p>konto-settings works!</p>
+<div class="centered">
+
+  <span class="page-title">Konto / Einstellungen</span>
+
+  <h1>Bearbeite dein Konto oder verändere Einstellungen.</h1>
+
+  <article>
+    <h2>Dein Benutzerkonto</h2>
+    <form [formGroup]="userDataForm" style="display: grid" *ngIf="userDataForm !== undefined else loadingUserSettings">
+
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="displayName">
+      </mat-form-field>
+
+      <mat-form-field matTooltip="Die User-Id ist unveränderlich.">
+        <input matInput placeholder="User-Id" [value]="(user | async)?.uid" disabled>
+      </mat-form-field>
+
+      <mat-form-field matTooltip="Ändere deine Mailadresse in deinem Google Konto.">
+        <input matInput placeholder="Mailadresse" [value]="(user | async)?.email" disabled>
+      </mat-form-field>
+
+      <p *ngIf="userDataForm.value.visibility == 'visible'" class="info">
+        Andere Nutzer von eMeal können dich finden und zu Lager hinzufügen: </p>
+      <p *ngIf="userDataForm.value.visibility == 'hidden'" class="info">
+        Andere Nutzer von eMeal können dich nicht finden und keine Lager mit dir teilen: </p>
+
+      <mat-form-field matTooltip="Sichtbarkeit für andere Nutzer">
+        <select #visibilitySelect matNativeControl [value]="userDataForm.value.visibility" placeholder="Sichtbarkeit"
+                (input)="visibilityChanged(visibilitySelect.value)">
+          <option value="hidden">versteckt</option>
+          <option value="visible">sichtbar</option>
+        </select>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="userDataForm.untouched" (click)="updateUserData()">Speichern</button>
+
+    </form>
+  </article>
+
+  <!-- Loading Animation -->
+  <ng-template #loadingUserSettings>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </ng-template>
+
+</div>

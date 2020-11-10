@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 
 // import {} from 'googlemaps';
 // @ts-ignore
+
 import {} from 'googlemaps';
 
+import {DatabaseServiceService} from '../../services/database-service.service';
 import MapTypeStyle = google.maps.MapTypeStyle;
 import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
@@ -46,7 +48,7 @@ export class RouteFinderComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private dbService: DatabaseServiceService) {
   }
 
   ngOnInit(): void {
@@ -138,7 +140,18 @@ export class RouteFinderComponent implements OnInit {
 
   saveRoute(): void {
 
+    if (this.totalDistance === 0) {
+      return;
+    }
+
     console.log('Save to my account: ' + this.totalDistance);
+
+    const data = {
+      access: {uid: 'owner'},
+      length: this.totalDistance
+    };
+
+    this.dbService.createDocument('routes', data).then(r => console.log(r));
 
   }
 
