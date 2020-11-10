@@ -47,7 +47,7 @@
     <input [formControl]="ceviName" matInput/>
   </mat-form-field>
 
-  <button class="button-add" mat-raised-button (click)="registerPart()">Cevianer speichern</button>
+  <button class="button-add" mat-raised-button [disabled]="firstName.invalid || lastName.invalid" (click)="registerPart()">Cevianer speichern</button>
 
 
 </div>
