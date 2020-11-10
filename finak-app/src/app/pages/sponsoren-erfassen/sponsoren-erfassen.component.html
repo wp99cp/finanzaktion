@@ -1,81 +1,105 @@
-
 <h1>Neuer Sponsor erfassen</h1>
 
-<div class="sponsor-form">
+<form class="sponsor-form" #sponsorForm="ngForm" [formGroup]="group">
 
   <mat-form-field appearance="fill">
     <mat-label>Vorname</mat-label>
-    <input [formControl]="firstName" required="true" matInput/>
+    <input autocomplete="off" formControlName="firstName" required="true" matInput/>
+    <mat-error *ngIf="group.get('firstName').invalid"></mat-error>
+
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Nachname</mat-label>
-    <input [formControl]="lastName"  required="true" matInput/>
+    <input autocomplete="off" formControlName="lastName" required="true" matInput/>
+    <mat-error *ngIf="group.get('lastName').invalid"></mat-error>
+
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Adresse</mat-label>
-    <input [formControl]="address" required="true" matInput/>
+    <input autocomplete="off" formControlName="address" required="true" matInput/>
+    <mat-error *ngIf="group.get('address').invalid"></mat-error>
+
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
     <mat-label>PLZ</mat-label>
-    <input [formControl]="ZIPCode" required="true" matInput/>
+    <input autocomplete="off" formControlName="ZIPCode" required="true" matInput/>
+    <mat-error *ngIf="group.get('ZIPCode').invalid"></mat-error>
+
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Ort</mat-label>
-    <input [formControl]="city" required="true" matInput/>
-  </mat-form-field>
+    <input  autocomplete="off" formControlName="city" required="true" matInput/>
+    <mat-error *ngIf="group.get('city').invalid"></mat-error>
 
-  <br>
-  <mat-checkbox [formControl]="isFixedAmount" >Fixbetrag verwenden</mat-checkbox>
-  <br>
-
-  <mat-form-field appearance="fill">
-    <mat-label *ngIf="isFixedAmount.value">Betrag in CHF</mat-label>
-    <mat-label *ngIf="!isFixedAmount.value">Betrag in CHF/km</mat-label>
-    <input [formControl]="amount" required="true" matInput/>
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
-    <mat-label> Zustellungsart</mat-label>
-    <mat-select [formControl]="deliveryMethod" required="true">
-      <mat-option value="mail">per Mail (direkt)</mat-option>
-      <mat-option value="post_direct">per Post (direkt)</mat-option>
-      <mat-option value="post_participant">per Post (an mich)</mat-option>
+    <mat-label> Art der Spende</mat-label>
+    <mat-select formControlName="isFixedAmount" required="true">
+      <mat-option value="false">Spende pro Kilometer</mat-option>
+      <mat-option value="true">Fixer Betrag</mat-option>
     </mat-select>
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
+    <mat-label *ngIf="group.get('isFixedAmount').value">Betrag in CHF</mat-label>
+    <mat-label *ngIf="!group.get('isFixedAmount').value">Betrag in CHF/km</mat-label>
+    <input autocomplete="off" formControlName="amount" required matInput/>
+    <mat-error *ngIf="group.get('amount').invalid">Ungültiger Betrag</mat-error>
+
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label> Zustellungsart des Einzahlungsschein</mat-label>
+    <mat-select formControlName="deliveryMethod" required="true">
+      <mat-option value="mail">per Mail (direkt an den Sponsor)</mat-option>
+      <mat-option value="post_participant">per Post (an mich)</mat-option>
+    </mat-select>
+    <mat-error *ngIf="group.get('deliveryMethod').invalid"></mat-error>
+
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
     <mat-label>Mailadresse Sponsor</mat-label>
-    <input [formControl]="email" matInput/>
-    <mat-error *ngIf="email.invalid">{{getErrorMessageMail()}}</mat-error>
+    <input autocomplete="off" formControlName="email" required="{{group.get('deliveryMethod').value == 'mail' }}" matInput/>
+    <mat-error *ngIf="group.get('email').invalid">{{getErrorMessageMail()}}</mat-error>
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Bemerkung</mat-label>
-    <textarea [formControl]="notes" matInput></textarea>
+    <textarea  formControlName="notes" matInput></textarea>
+    <mat-error *ngIf="group.get('notes').invalid"></mat-error>
+
   </mat-form-field>
 
   <br>
 
-  <button mat-raised-button class="add-button" (click)="saveSponsor()" routerLink="/app/{{partId}}/sponsoren">Sponsor Speichern</button>
-  <button mat-raised-button class="add-button" color="warn" routerLink="/app/{{partId}}/sponsoren">Abbrechen</button>
+  <button mat-raised-button class="add-button" color="primary" [disabled]="!group.valid" (click)="saveSponsor()"
+          routerLink="/app/{{partId}}/sponsoren">Sponsor Speichern
+  </button>
+  <button mat-raised-button class="add-button" routerLink="/app/{{partId}}/sponsoren">Abbrechen</button>
 
-</div>
+</form>
 

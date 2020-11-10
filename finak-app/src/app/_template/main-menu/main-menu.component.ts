@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {TemplateHeaderComponent} from '../template-header/template-header.component';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -11,8 +13,11 @@ export class MainMenuComponent {
 
 
   constructor(
-    public fireAuth: AngularFireAuth
+    public fireAuth: AngularFireAuth,
+    public userService: UserService,
   ) {
+
+
   }
 
 

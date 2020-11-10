@@ -3,10 +3,13 @@
   <span class="page-title"> Finanzaktion 2020</span>
 
   <h1>Ich mache mit!</h1>
-  <p>Account von: Cyrill Püntener v/o JPG <br>
-    <a routerLink="/app/mitmachen">Account wechseln</a></p>
 
   <div class="stufen-overview" *ngIf="isSignedIn else linkToLogInPage">
+
+    <ng-container *ngIf="participant">
+      <p>Account von: {{participant.first_name}} {{participant.last_name}} <br>
+        <a routerLink="/app/mitmachen">Account wechseln</a></p>
+    </ng-container>
 
     <button class="nav-button" mat-raised-button routerLink="/app/{{partID}}/sponsoren">Sponsor Erfassen</button>
     <button class="nav-button" mat-raised-button routerLink="/app/{{partID}}/routen">Velostrecke erfassen</button>
@@ -23,7 +26,7 @@
     wenden.</p>
 
   <h3>Meine Route wird nicht wie gewünscht eingezeichnet?</h3>
-  <p>Du kannst deine Route anpassen, in dem du die blaue Linie per Drag&Drop verschiebst. Zusätzlich kannst du auch die
+  <p>Du kannst deine Route anpassen, in dem du die blaue Linie per Mausklick verschiebst. Zusätzlich kannst du auch die
     Start und Zielpunkte verschieben. Falls Google-Maps dein Weg (z.B. Waldwege) nicht kennt, kannst du die Distanz auch
     manuell Erfassen/Bearbeiten.</p>
 

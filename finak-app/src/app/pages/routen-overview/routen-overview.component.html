@@ -1,11 +1,10 @@
 <div class="centered">
 
-
   <h1> Meine Routen</h1>
 
   <article *ngIf="(routen | async) as routen  else loadingUserSettings">
 
-    <div *ngFor="let route of routen" routerLink="erfassen/{{route.id}}">
+    <div class="route" *ngFor="let route of routen" routerLink="erfassen/{{route.id}}">
 
       <span> {{route.origin}} </span>
       <span> {{route.destination}} </span>
@@ -14,7 +13,12 @@
 
     </div>
 
-    <p><a routerLink="erfassen">Route erfassen</a></p>
+    <br>
+    <i>Klicke auf einen Sponsor, um ihn zu bearbeiten.</i>
+    <br>
+    <br>
+
+    <button mat-raised-button class="add-button" routerLink="erfassen">Route erfassen</button>
 
   </article>
 
@@ -23,5 +27,11 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
 
+  <br>
+  <br>
+
+  <h3>Einen Sponsor erfassen</h3>
+  <p>Damit du mit deinen Kilometer Spenden sammeln kannst, musst du einen Sponsor erfassen: <br> <a
+    routerLink="../sponsoren">Sponsor erfassen</a> oder <a routerLink="../mitmachen">Zurück zur Übersicht</a></p>
 
 </div>

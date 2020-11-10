@@ -4,31 +4,24 @@
 
   <h1>Angaben zum Cevianer/zur Cevianerinn.</h1>
 
-  <ng-container *ngIf="(participants | async)?.length > 0 else register">
 
-    <p>Damit wir die Spenden korrekt zuordnen können, musst du uns verraten wie du heisst. <br>
-      <b>Eltern können mehrere Kinder eintragen </b> und so sie Spenden/Kilometer aller Kinder mit dem selben Login
-      verwalten.</p>
+  <p>Damit wir die Spenden korrekt zuordnen können, musst du uns verraten wie du bzw. deine Kinder heissen.
+    <b>Eltern können mehrere Kinder eintragen </b> und so die Spenden/Kilometer aller Kinder mit dem selben Login
+    verwalten.</p>
 
-
-    <ng-container *ngIf="(participants | async) as participants else register">
+  <ng-container *ngIf="(participants | async)?.length > 0">
+    <ng-container *ngIf="(participants | async) as participants">
 
       <p>Wähle ein/e erfasste Cevianer/innen aus der Liste.</p>
 
-      <div *ngFor="let part of participants " routerLink="/app/{{part.id}}/mitmachen" class="cevianer">
+      <div *ngFor="let part of participants " routerLink="/app/{{part.id}}/mitmachen" class="cevianer" (click)="setPart(part.id)">
         <span>{{part.first_name}}</span>
         <span>{{part.last_name}}</span>
         <span> v/o {{part.cevi_name}}</span>
       </div>
 
     </ng-container>
-
   </ng-container>
-
-  <ng-template #register>
-    <p>Mit deinem Konto sind noch keine Teilnehmer verknüpft. Erfasse eine neue Person für dich/jedes deiner Kinder.</p>
-  </ng-template>
-
 
   <h3>Neue/r Cevianer/innen erfassen:</h3>
 
