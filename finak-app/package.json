@@ -1,6 +1,7 @@
 {
-  "name": "matraum-app",
-  "version": "0.0.0",
+  "name": "finak-app",
+  "version": "0.1.0",
+  "copyrights": "© 2019 - 2020 Cevi Züri 11 - Finanzaktion",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

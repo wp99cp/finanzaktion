@@ -1,18 +1,21 @@
 <h1>Route Erfassen</h1>
-<div id="floating-panel">
-  <b>Start: </b>
-  <select id="start">
-    <option value="Bahnhof Oerlikon">Bahnhof Oerlikon</option>
-    <option value="Kirche Glaubten, 8046 Zürich">Glaubtenstrasse</option>
-  </select>
 
-  <b>End: </b>
-  <select id="end">
-    <option value="Bahnhof Affoltern">Bahnhof Affoltern</option>
-    <option value="Matraum Cevi Züri 11">Matraum</option>
-    <option value="unterstrass.edu">Unterstrass</option>
-  </select>
+<p>Das Erfassen von neuen Routen ist ganz einfach. Gib den Start und Zielort deiner Route ein (Adresse).
+  Anschliessend erscheint eine mögliche Route auf der Karte, passe die Route deiner effektiv gefahrenen Strecke an, in
+  dem du die blaue Line per Drag&Drop verschiebst. Klicke anschliessend auf Route bestätigen.</p>
+
+<div>
+
+  <label for="start">Start: </label>
+  <input type="text" id="start" name="start"><br><br>
+
+  <label for="end">Start: </label>
+  <input type="text" id="end" name="end"><br><br>
+
 </div>
+
+<button id="search"> Route Berechnen</button>
+<button (click)="saveRoute()"> Route Bestätigen</button>
 
 <div id="map"></div>
 

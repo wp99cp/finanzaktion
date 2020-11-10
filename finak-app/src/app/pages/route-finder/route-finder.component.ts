@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 // import {} from 'googlemaps';
 // @ts-ignore
-import {} from 'googlemaps'
+import {} from 'googlemaps';
+
 import MapTypeStyle = google.maps.MapTypeStyle;
 import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
@@ -16,6 +17,10 @@ import DirectionsRenderer = google.maps.DirectionsRenderer;
   styleUrls: ['./route-finder.component.sass']
 })
 export class RouteFinderComponent implements OnInit {
+
+
+  private totalDistance = 0;
+
 
   private styleArray: MapTypeStyle[] = [{
     elementType: 'labels',
@@ -82,14 +87,12 @@ export class RouteFinderComponent implements OnInit {
     const onChangeHandler = () => {
       this.calculateAndDisplayRoute(directionsService, directionsRenderer);
     };
-    (document.getElementById('start') as HTMLElement).addEventListener(
-      'change',
+
+    (document.getElementById('search') as HTMLElement).addEventListener(
+      'click',
       onChangeHandler
     );
-    (document.getElementById('end') as HTMLElement).addEventListener(
-      'change',
-      onChangeHandler
-    );
+
   }
 
   calculateAndDisplayRoute(directionsService: DirectionsService, directionsRenderer: DirectionsRenderer): void {
@@ -106,25 +109,36 @@ export class RouteFinderComponent implements OnInit {
       (response, status) => {
 
         if (status === 'OK') {
+
           directionsRenderer.setDirections(response);
+
         } else {
-          window.alert('Directions request failed due to ' + status);
+
+          window.alert('Google Maps konnte keine Route berechnen! Bitte prüfe deine Adressen!');
+
         }
       }
     );
   }
 
+
   computeTotalDistance(result: DirectionsResult): void {
 
-    let total = 0;
+    this.totalDistance = 0;
     const myroute = result.routes[0];
 
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < myroute.legs.length; i++) {
-      total += myroute.legs[i].distance.value;
+      this.totalDistance += myroute.legs[i].distance.value;
     }
-    total = total / 1000;
-    console.log(total);
+    this.totalDistance = this.totalDistance / 1000;
+    console.log(this.totalDistance);
+
+  }
+
+  saveRoute(): void {
+
+    console.log('Save to my account: ' + this.totalDistance);
 
   }
 

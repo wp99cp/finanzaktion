@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { Component } from '@angular/core';
+import { TemplateHeaderComponent } from './_template/template-header/template-header.component';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,24 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
+  title = 'eMeal';
 
-  // the AngularFireAuth Service is needed, to ensure that the user is signed in
-  constructor(fireAuth: AngularFireAuth) {
+  /** wird bei jedem Seitenwechsel ausgeführt */
+  public onActivate(event): void {
 
+    const scrollToTop = window.setInterval(() => {
+      const pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 50); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
+  }
+
+  public closeMenu(): void {
+
+    TemplateHeaderComponent.showMenu();
 
   }
 
