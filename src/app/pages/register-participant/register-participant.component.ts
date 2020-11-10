@@ -28,6 +28,10 @@ export class RegisterParticipantComponent implements OnInit {
 
   registerPart() {
 
+    this.firstName.setValue('');
+    this.lastName.setValue('');
+    this.ceviName.setValue('');
+
     const data = {
       first_name: this.firstName.value,
       last_name: this.lastName.value,
