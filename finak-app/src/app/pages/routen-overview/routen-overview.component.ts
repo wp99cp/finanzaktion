@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {DatabaseServiceService} from '../../services/database-service.service';
+import {ActivatedRoute} from '@angular/router';
+import {mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-routen-overview',
@@ -7,8 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutenOverviewComponent implements OnInit {
 
-  constructor() { }
+  public routen: Observable<any[]>;
 
+  constructor(dbService: DatabaseServiceService, private route: ActivatedRoute) {
+
+    this.routen = this.route.params.pipe(mergeMap(params =>
+      dbService.load_routen(params.partId)));
+    this.routen.subscribe(sp => console.log(sp));
+
+  }
   ngOnInit(): void {
   }
 

@@ -6,7 +6,7 @@
 
   <article *ngIf="(sponsoren | async) as sponsoren  else loadingUserSettings">
 
-    <div *ngFor="let sponsor of sponsoren">
+    <div *ngFor="let sponsor of sponsoren" routerLink="erfassen/{{sponsor.id}}">
 
       <span> {{sponsor.first_name}} </span>
       <span> {{sponsor.last_name}} </span>
@@ -22,5 +22,8 @@
   <ng-template #loadingUserSettings>
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
+
+  <p><a routerLink="../mitmachen">Zurück zur Übersicht</a></p>
+
 
 </div>

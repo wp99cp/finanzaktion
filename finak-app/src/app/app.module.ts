@@ -36,6 +36,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { RegisterParticipantComponent } from './pages/register-participant/register-participant.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     SponsorenErfassenComponent,
     VeloRouteSinaiComponent,
     KontoSettingsComponent,
-    OauthCallbackComponent
+    OauthCallbackComponent,
+    RegisterParticipantComponent
   ],
   imports: [
     BrowserModule,

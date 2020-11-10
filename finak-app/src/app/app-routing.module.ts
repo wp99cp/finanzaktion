@@ -11,6 +11,7 @@ import {VeloRouteSinaiComponent} from './page/velo-route-sinai/velo-route-sinai.
 import {KontoSettingsComponent} from './page/konto-settings/konto-settings.component';
 import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.component';
+import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'live',
     component: LiveFeedComponent
+  },
+
+  {
+    path: 'app/register',
+    component: RegisterParticipantComponent
   },
 
   {

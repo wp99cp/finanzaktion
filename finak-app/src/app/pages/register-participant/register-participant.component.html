@@ -1,0 +1,51 @@
+<div class="centered">
+
+  <span class="page-title"> Meine Angaben </span>
+  <h1>Angaben zu mir oder meinen Kindern.</h1>
+
+
+  <ng-container *ngIf="(participants | async)?.length > 0 else register">
+    <p>Mit deinem Konto sind folgende Personen verknüpft,
+      bitte wähle mit welcher du Fortfahren willst.</p>
+
+    <ng-container *ngIf="(participants | async) as participants else register">
+
+      <div *ngFor="let part of participants " routerLink="/app/{{part.id}}/mitmachen">
+        <span>{{part.first_name}}</span>
+        <span>{{part.last_name}}</span>
+        <span>{{part.cevi_name}}</span>
+      </div>
+
+    </ng-container>
+
+  </ng-container>
+
+  <ng-template #register>
+    <p>Mit deinem Konto sind noch keine Teilnehmer verknüpft. Erfasse eine neue Person für dich/jedes deiner Kinder.</p>
+  </ng-template>
+
+  <h3>Neue Person erfassen:</h3>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Vorname</mat-label>
+    <input [formControl]="firstName" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nachname</mat-label>
+    <input [formControl]="lastName" required="true" matInput/>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ceviname</mat-label>
+    <input [formControl]="ceviName" matInput/>
+  </mat-form-field>
+
+  <button (click)="registerPart()">Erfassen</button>
+
+
+</div>

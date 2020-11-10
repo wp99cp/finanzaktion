@@ -1,0 +1,43 @@
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {DatabaseServiceService} from '../../services/database-service.service';
+import {Observable} from "rxjs";
+
+@Component({
+  selector: 'app-register-participant',
+  templateUrl: './register-participant.component.html',
+  styleUrls: ['./register-participant.component.sass']
+})
+export class RegisterParticipantComponent implements OnInit {
+  lastName: FormControl = new FormControl('');
+  firstName: FormControl = new FormControl('');
+  ceviName: FormControl = new FormControl('');
+
+  public  participants: Observable<any[]>;
+
+  constructor(private dbService: DatabaseServiceService) {
+  }
+
+  ngOnInit(): void {
+
+    this.participants = this.dbService.load_participants();
+    this.participants.subscribe(console.log)
+
+  }
+
+  registerPart() {
+
+    const data = {
+      first_name: this.firstName.value,
+      last_name: this.lastName.value,
+      cevi_name: this.ceviName.value,
+      stufe: 'unknwon',
+    };
+
+    this.dbService.createDocument('participants', data)
+      .then(r => console.log(r));
+
+
+  }
+
+}

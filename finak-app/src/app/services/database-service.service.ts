@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {map} from 'rxjs/operators';
+import {map, mergeMap} from 'rxjs/operators';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import {map} from 'rxjs/operators';
 export class DatabaseServiceService {
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private auth: AngularFireAuth,
   ) {
 
 
@@ -28,6 +30,24 @@ export class DatabaseServiceService {
 
   }
 
+  load_participants() {
+
+    return this.auth.user.pipe(mergeMap(user => {
+
+      const collRef = this.db.collection('participants', p =>
+        p.where('access.' + user.uid, 'in', ['owner']));
+
+      return collRef.snapshotChanges()
+        .pipe(map(docAction => docAction.map(doc => {
+          const data: any = doc.payload.doc.data();
+          data.id = doc.payload.doc.id;
+          return data;
+        })));
+
+    }));
+
+  }
+
   public load_sponsor(sponsorId: string) {
 
     return this.db.doc('sponsoren/' + sponsorId,).snapshotChanges()
@@ -43,6 +63,20 @@ export class DatabaseServiceService {
   }
 
 
+  public load_routen(partId: string) {
+
+    const collRef = (partId !== undefined) ?
+      this.db.collection('routes', p => p.where('route_of', '==', partId)) :
+      this.db.collection('routes');
+
+    return collRef.snapshotChanges()
+      .pipe(map(docAction => docAction.map(doc => {
+        const data: any = doc.payload.doc.data();
+        data.id = doc.payload.doc.id;
+        return data;
+      })));
+  }
+
   load_sponsoren(partId: string) {
 
     const collRef = (partId !== undefined) ?
@@ -50,17 +84,30 @@ export class DatabaseServiceService {
       this.db.collection('sponsoren');
 
     return collRef.snapshotChanges()
-      .pipe(map(docAction => docAction.map(doc => doc.payload.doc.data())));
+      .pipe(map(docAction => docAction.map(doc => {
+        const data: any = doc.payload.doc.data();
+        data.id = doc.payload.doc.id;
+        return data;
+      })));
 
   }
 
-  createDocument(path: string, data: {}) {
-    return this.db.collection(path).add(data);
+  createDocument(path: string, data: any) {
+
+    return new Promise(resolve => this.auth.user.subscribe(user => {
+      data.access = {[user.uid]: 'owner'};
+      this.db.collection(path).add(data).then(r => resolve(r));
+    }));
+
   }
 
 
-  updateDocument(path: string, data: {}) {
-    return this.db.doc(path).update(data);
+  updateDocument(path: string, data: any) {
+
+    return new Promise(resolve => this.auth.user.subscribe(user => {
+      data.access = {[user.uid]: 'owner'};
+      return this.db.doc(path).update(data).then(r => resolve(r));
+    }));
 
   }
 
