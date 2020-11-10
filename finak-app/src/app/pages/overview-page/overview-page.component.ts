@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {DatabaseServiceService} from '../../services/database-service.service';
 
 @Component({
   selector: 'app-overview-page',
@@ -13,11 +14,13 @@ export class OverviewPageComponent implements OnInit, OnDestroy {
   public isSignedIn = false;
   private routeSub: Subscription;
   private partID = undefined;
+  private participant: any;
 
   constructor(
     public fireAuth: AngularFireAuth,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private dbService: DatabaseServiceService) {
 
     this.fireAuth.authState.subscribe(user => {
       this.isSignedIn = (user !== null);
@@ -27,6 +30,10 @@ export class OverviewPageComponent implements OnInit, OnDestroy {
         this.routeSub = this.route.params.subscribe(params => {
 
           this.partID = params.partId;
+
+          this.dbService.load_participant(this.partID).subscribe(part => {
+            this.participant = part;
+          });
 
           if (!this.partID) {
 

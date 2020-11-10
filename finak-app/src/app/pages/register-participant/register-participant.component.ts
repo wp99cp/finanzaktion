@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {Observable} from "rxjs";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-register-participant',
@@ -15,7 +16,7 @@ export class RegisterParticipantComponent implements OnInit {
 
   public  participants: Observable<any[]>;
 
-  constructor(private dbService: DatabaseServiceService) {
+  constructor(private dbService: DatabaseServiceService,     public userService: UserService,) {
   }
 
   ngOnInit(): void {
@@ -38,6 +39,10 @@ export class RegisterParticipantComponent implements OnInit {
       .then(r => console.log(r));
 
 
+  }
+
+  setPart(id: string) {
+    this.userService.partId = id;
   }
 
 }
