@@ -1,3 +1,11 @@
-<main id="main">
-  <router-outlet></router-outlet>
+
+<app-template-header></app-template-header>
+
+<app-main-menu></app-main-menu>
+
+<main id="main" (click)="closeMenu()">
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
 </main>
+
+
+<app-template-footer (click)="closeMenu()"></app-template-footer>
