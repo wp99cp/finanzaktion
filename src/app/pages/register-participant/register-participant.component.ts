@@ -14,9 +14,9 @@ export class RegisterParticipantComponent implements OnInit {
   firstName: FormControl = new FormControl('');
   ceviName: FormControl = new FormControl('');
 
-  public  participants: Observable<any[]>;
+  public participants: Observable<any[]>;
 
-  constructor(private dbService: DatabaseServiceService,     public userService: UserService,) {
+  constructor(private dbService: DatabaseServiceService, public userService: UserService,) {
   }
 
   ngOnInit(): void {
@@ -28,10 +28,6 @@ export class RegisterParticipantComponent implements OnInit {
 
   registerPart() {
 
-    this.firstName.setValue('');
-    this.lastName.setValue('');
-    this.ceviName.setValue('');
-
     const data = {
       first_name: this.firstName.value,
       last_name: this.lastName.value,
@@ -41,6 +37,10 @@ export class RegisterParticipantComponent implements OnInit {
 
     this.dbService.createDocument('participants', data)
       .then(r => console.log(r));
+
+    this.firstName.setValue('');
+    this.lastName.setValue('');
+    this.ceviName.setValue('');
 
 
   }

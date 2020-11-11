@@ -4,18 +4,35 @@
   Es erscheint eine mögliche Route auf der Karte, passe die Route deiner effektiv gefahrenen Strecke an, in
   dem du die blaue Line per Mausklick verschiebst. Klicke anschliessend auf Route bestätigen.</p>
 
-<div>
+<div [formGroup]="group">
 
-  <label for="start">Start: </label>
-  <input type="text" id="start" name="start"><br><br>
+  <mat-form-field appearance="fill">
+    <mat-label for="start">Start:  </mat-label>
+    <input matInput type="text" id="start" name="start" required placeholder="Glaubtenstrasse 1, 8046 Zürich"><br><br>
+  </mat-form-field>
 
-  <label for="end">Ziel: </label>
-  <input type="text" id="end" name="end"><br><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label for="end">Ziel: </mat-label>
+    <input matInput type="text" id="end" name="end" required placeholder="Matraum Cevi Züri 11, Zürich"><br><br>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label for="end">Datum: </mat-label>
+    <input matInput type="date" id="date" name="date" required><br><br>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Kurze Beschreibung</mat-label>
+    <textarea  placeholder="z.B. Weg zum Matraum" formControlName="notes" matInput required></textarea>
+  </mat-form-field>
 
 </div>
 
-<button id="search"> Route Berechnen</button>
-<button (click)="saveRoute()"> Route Bestätigen</button>
+<button mat-raised-button id="search"> Route Berechnen</button>
+<button mat-raised-button color="primary" (click)="saveRoute()" routerLink="/app/{{partId}}/routen" [disabled]="!group.valid || !routeBerechnet"> Route Bestätigen</button>
+
+<button mat-raised-button class="add-button" routerLink="/app/{{partId}}/sponsoren">Abbrechen</button>
 
 <div id="map"></div>
 

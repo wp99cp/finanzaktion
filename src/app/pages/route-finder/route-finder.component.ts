@@ -12,6 +12,7 @@ import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
 import DirectionsService = google.maps.DirectionsService;
 import DirectionsRenderer = google.maps.DirectionsRenderer;
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -49,7 +50,16 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
     }
   ];
   private routeSubst: Subscription;
-  private partId: any;
+  public partId: any;
+  public group = new FormGroup({
+    start: new FormControl(''),
+    end: new FormControl(''),
+    date: new FormControl(''),
+    notes: new FormControl(''),
+  });
+
+  public routeBerechnet = false;
+
 
   constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
 
@@ -114,6 +124,9 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
   }
 
   calculateAndDisplayRoute(directionsService: DirectionsService, directionsRenderer: DirectionsRenderer): void {
+
+    this.routeBerechnet= true;
+
     directionsService.route(
       {
         origin: {
@@ -167,6 +180,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
       length: this.totalDistance,
       origin: (document.getElementById('start') as HTMLInputElement).value,
       destination: (document.getElementById('end') as HTMLInputElement).value,
+      date: (document.getElementById('date') as HTMLInputElement).value,
     };
 
     this.dbService.createDocument('routes', data).then(r => console.log(r));
