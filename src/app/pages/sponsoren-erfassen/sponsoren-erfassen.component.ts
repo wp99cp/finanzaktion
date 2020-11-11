@@ -19,7 +19,7 @@ export class SponsorenErfassenComponent implements OnInit, OnDestroy {
     amount: new FormControl('', {validators: [Validators.pattern(/^(\d){1,4}(\.\d{1,2})?$/)]}),
     ZIPCode: new FormControl('', {validators: [Validators.pattern(/^\d\d\d\d$/)]}),
     city: new FormControl(''),
-    isFixedAmount: new FormControl('false'),
+    donation_type: new FormControl('per_km'),
     deliveryMethod: new FormControl('mail'),
     notes: new FormControl(''),
     email: new FormControl('', {validators: [Validators.email]}),
