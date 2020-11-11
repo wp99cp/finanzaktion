@@ -40,7 +40,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Ort</mat-label>
-    <input  autocomplete="off" formControlName="city" required="true" matInput/>
+    <input autocomplete="off" formControlName="city" required="true" matInput/>
     <mat-error *ngIf="group.get('city').invalid"></mat-error>
 
   </mat-form-field>
@@ -49,17 +49,17 @@
 
   <mat-form-field appearance="fill">
     <mat-label> Art der Spende</mat-label>
-    <mat-select formControlName="isFixedAmount" required="true">
-      <mat-option value="false">Spende pro Kilometer</mat-option>
-      <mat-option value="true">Fixer Betrag</mat-option>
+    <mat-select formControlName="donation_type" required="true">
+      <mat-option value='per_km'>Spende pro Kilometer</mat-option>
+      <mat-option value='fixed'>Fixer Betrag</mat-option>
     </mat-select>
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="fill">
-    <mat-label *ngIf="group.get('isFixedAmount').value">Betrag in CHF</mat-label>
-    <mat-label *ngIf="!group.get('isFixedAmount').value">Betrag in CHF/km</mat-label>
+    <mat-label *ngIf="group.get('donation_type').value === 'fixed'">Betrag in CHF</mat-label>
+    <mat-label *ngIf="group.get('donation_type').value === 'per_km'">Betrag in CHF/km</mat-label>
     <input autocomplete="off" formControlName="amount" required matInput/>
     <mat-error *ngIf="group.get('amount').invalid">Ungültiger Betrag</mat-error>
 
@@ -81,7 +81,8 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Mailadresse Sponsor</mat-label>
-    <input autocomplete="off" formControlName="email" required="{{group.get('deliveryMethod').value == 'mail' }}" matInput/>
+    <input autocomplete="off" formControlName="email" required="{{group.get('deliveryMethod').value == 'mail' }}"
+           matInput/>
     <mat-error *ngIf="group.get('email').invalid">{{getErrorMessageMail()}}</mat-error>
   </mat-form-field>
 
@@ -89,7 +90,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Bemerkung</mat-label>
-    <textarea  formControlName="notes" matInput></textarea>
+    <textarea formControlName="notes" matInput></textarea>
     <mat-error *ngIf="group.get('notes').invalid"></mat-error>
 
   </mat-form-field>
