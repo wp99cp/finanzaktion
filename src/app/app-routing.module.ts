@@ -13,6 +13,7 @@ import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.component';
 import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
+import {DatenschutzerklaerungComponent} from "./pages/datenschutzerklaerung/datenschutzerklaerung.component";
 
 const routes: Routes = [
 
@@ -88,6 +89,11 @@ const routes: Routes = [
   {
     path: 'app/anmelden',
     component: SignInPageComponent
+  },
+
+  {
+    path: 'datenschutz',
+    component: DatenschutzerklaerungComponent
   },
 
 ];

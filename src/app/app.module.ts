@@ -39,6 +39,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { RegisterParticipantComponent } from './pages/register-participant/register-participant.component';
 import {MatButtonModule} from "@angular/material/button";
 import { WettbewerbComponent } from './pages/wettbewerb/wettbewerb.component';
+import { DatenschutzerklaerungComponent } from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { WettbewerbComponent } from './pages/wettbewerb/wettbewerb.component';
     KontoSettingsComponent,
     OauthCallbackComponent,
     RegisterParticipantComponent,
-    WettbewerbComponent
+    WettbewerbComponent,
+    DatenschutzerklaerungComponent
   ],
     imports: [
         BrowserModule,
