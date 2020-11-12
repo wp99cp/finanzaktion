@@ -1,4 +1,6 @@
-# MatraumApp
+# Finanzaktion 2020
+
+--> finanzaktion.ch
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
