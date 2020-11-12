@@ -3,6 +3,7 @@ import {DatabaseServiceService} from '../../services/database-service.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-konto-settings',
@@ -19,10 +20,16 @@ export class KontoSettingsComponent implements OnInit {
     this.user = fireAuth.user;
 
     this.userDataForm = formBuilder.group({
-      displayName: '',
-      visibility: 'hidden' });
+      displayName: ''
+    });
 
-
+    this.user.pipe(take(1))
+      .subscribe(u => {
+        console.log(u)
+        this.userDataForm.setValue({
+          displayName: u.displayName
+        });
+      });
   }
 
   ngOnInit(): void {
