@@ -12,6 +12,7 @@ import {KontoSettingsComponent} from './page/konto-settings/konto-settings.compo
 import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.component';
 import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
+import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'live',
     component: LiveFeedComponent
+  },
+
+  {
+    path: 'gewinnen',
+    component: WettbewerbComponent
   },
 
   {

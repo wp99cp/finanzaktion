@@ -38,6 +38,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { RegisterParticipantComponent } from './pages/register-participant/register-participant.component';
 import {MatButtonModule} from "@angular/material/button";
+import { WettbewerbComponent } from './pages/wettbewerb/wettbewerb.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {MatButtonModule} from "@angular/material/button";
     VeloRouteSinaiComponent,
     KontoSettingsComponent,
     OauthCallbackComponent,
-    RegisterParticipantComponent
+    RegisterParticipantComponent,
+    WettbewerbComponent
   ],
     imports: [
         BrowserModule,
