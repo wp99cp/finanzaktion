@@ -52,7 +52,7 @@ export class SponsorenErfassenComponent implements OnInit, OnDestroy {
             email: spon.email,
             notes: spon.notes,
             deliveryMethod: spon.delivery_method,
-            isFixedAmount: spon.is_fixed_amount,
+            donation_type: spon.donation_type,
             city: spon.address_city,
             ZIPCode: spon.address_plz,
             amount: spon.amount,
@@ -79,7 +79,7 @@ export class SponsorenErfassenComponent implements OnInit, OnDestroy {
     const data = {
       first_name: this.group.get('firstName').value,
       last_name: this.group.get('lastName').value,
-      is_fixed_amount: this.group.get('isFixedAmount').value,
+      donation_type: this.group.get('donation_type').value,
       amount: this.group.get('amount').value,
       email: this.group.get('email').value,
       address_street: this.group.get('address').value,
