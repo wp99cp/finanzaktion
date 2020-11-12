@@ -101,7 +101,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
         center: {lat: 47.4176056, lng: 8.5192438},
         styles: this.styleArray,
         disableDefaultUI: true,
-        scrollwheel: false,
+        fullscreenControl: true,   //all other controls works fine
         zoomControl: true,
       }
     );
@@ -145,7 +145,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
 
         } else {
 
-          window.alert('Google Maps konnte keine Route berechnen! Bitte prüfe deine Adressen!');
+          window.alert('Google Maps konnte keine Route berechnen! Bitte prüfe deine Adressen, sind diese Vollständig (Strasse, Hausnummer, Ort)?');
 
         }
       }
