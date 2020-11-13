@@ -12,7 +12,7 @@
   <ng-container *ngIf="(participants | async)?.length > 0">
     <ng-container *ngIf="(participants | async) as participants">
 
-      <p>Wähle ein/e erfasste Cevianer/innen aus der Liste.</p>
+      <p *ngIf="participants.length > 0">Wähle ein/e erfasste Cevianer/innen aus der Liste.</p>
 
       <div *ngFor="let part of participants " routerLink="/app/{{part.id}}/mitmachen" class="cevianer" (click)="setPart(part.id)">
         <span>{{part.first_name}}</span>

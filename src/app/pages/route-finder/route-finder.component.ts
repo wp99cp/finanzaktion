@@ -2,17 +2,18 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 
 // import {} from 'googlemaps';
 // @ts-ignore
+
 import {} from 'googlemaps';
 
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {FormControl, FormGroup} from '@angular/forms';
 import MapTypeStyle = google.maps.MapTypeStyle;
 import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
 import DirectionsService = google.maps.DirectionsService;
 import DirectionsRenderer = google.maps.DirectionsRenderer;
-import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -23,9 +24,15 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class RouteFinderComponent implements OnInit, OnDestroy {
 
 
+  public partId: any;
+  public group = new FormGroup({
+    start: new FormControl(''),
+    end: new FormControl(''),
+    date: new FormControl(''),
+    notes: new FormControl(''),
+  });
+  public routeBerechnet = false;
   private totalDistance = 0;
-
-
   private styleArray: MapTypeStyle[] = [{
     elementType: 'labels',
     stylers: [{
@@ -50,16 +57,6 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
     }
   ];
   private routeSubst: Subscription;
-  public partId: any;
-  public group = new FormGroup({
-    start: new FormControl(''),
-    end: new FormControl(''),
-    date: new FormControl(''),
-    notes: new FormControl(''),
-  });
-
-  public routeBerechnet = false;
-
 
   constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
 
@@ -125,7 +122,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
 
   calculateAndDisplayRoute(directionsService: DirectionsService, directionsRenderer: DirectionsRenderer): void {
 
-    this.routeBerechnet= true;
+    this.routeBerechnet = true;
 
     directionsService.route(
       {
@@ -183,7 +180,9 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
       date: (document.getElementById('date') as HTMLInputElement).value,
     };
 
-    this.dbService.createDocument('routes', data).then(r => console.log(r));
+    this.dbService.createDocument('routes', data)
+      .then(r => console.log(r))
+      .catch(err => alert('Routen können erst ab dem 30. November erfasst werden!'));
 
   }
 
