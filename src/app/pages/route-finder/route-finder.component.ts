@@ -32,7 +32,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
     notes: new FormControl(''),
   });
   public routeBerechnet = false;
-  private totalDistance = 0;
+  public totalDistance = 0;
   private styleArray: MapTypeStyle[] = [{
     elementType: 'labels',
     stylers: [{
