@@ -24,22 +24,24 @@ import {TemplateFooterComponent} from './_template/template-footer/template-foot
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {LiveFeedComponent} from './pages/live-feed/live-feed.component';
-import { RoutenOverviewComponent } from './pages/routen-overview/routen-overview.component';
-import { SponsorenOverviewComponent } from './pages/sponsoren-overview/sponsoren-overview.component';
-import { SponsorenErfassenComponent } from './pages/sponsoren-erfassen/sponsoren-erfassen.component';
-import { VeloRouteSinaiComponent } from './page/velo-route-sinai/velo-route-sinai.component';
-import { KontoSettingsComponent } from './page/konto-settings/konto-settings.component';
-import { OauthCallbackComponent } from './page/oauth-callback/oauth-callback.component';
+import {RoutenOverviewComponent} from './pages/routen-overview/routen-overview.component';
+import {SponsorenOverviewComponent} from './pages/sponsoren-overview/sponsoren-overview.component';
+import {SponsorenErfassenComponent} from './pages/sponsoren-erfassen/sponsoren-erfassen.component';
+import {VeloRouteSinaiComponent} from './page/velo-route-sinai/velo-route-sinai.component';
+import {KontoSettingsComponent} from './page/konto-settings/konto-settings.component';
+import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { RegisterParticipantComponent } from './pages/register-participant/register-participant.component';
+import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
 import {MatButtonModule} from "@angular/material/button";
-import { WettbewerbComponent } from './pages/wettbewerb/wettbewerb.component';
-import { DatenschutzerklaerungComponent } from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
+import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
+import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
+import {AngularFireMessaging} from "@angular/fire/messaging";
+import {mergeMap} from "rxjs/operators";
 
 
 @NgModule({
@@ -64,26 +66,26 @@ import { DatenschutzerklaerungComponent } from './pages/datenschutzerklaerung/da
     WettbewerbComponent,
     DatenschutzerklaerungComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        AngularFireModule.initializeApp(environment.firebaseConfig, 'Matraum App'),
-        AngularFirestoreModule,
-        AngularFireAuthModule,
-        MatDialogModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTooltipModule,
-        MatSlideToggleModule,
-        MatProgressBarModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatButtonModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'Matraum App'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSlideToggleModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
+  ],
   providers: [
     AngularFirestore,
     AngularFireAuth,
@@ -91,6 +93,22 @@ import { DatenschutzerklaerungComponent } from './pages/datenschutzerklaerung/da
     WebcamService
   ],
   bootstrap: [AppComponent],
-  exports:[ MatFormFieldModule, MatInputModule]
+  exports: [MatFormFieldModule, MatInputModule]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private  messaging: AngularFireMessaging) {
+
+    this.messaging.requestPermission
+      .pipe(mergeMap(() => {
+        console.log('OK!');
+        return messaging.getToken;
+      })).subscribe(token => {
+        console.log(token);
+    }, err => console.log(err));
+
+    this.messaging.onMessage(payload => console.log(payload))
+      .then(r => console.log());
+  }
+
+}
