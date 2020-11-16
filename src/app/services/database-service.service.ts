@@ -94,9 +94,9 @@ export class DatabaseServiceService {
 
   createDocument(path: string, data: any) {
 
-    return new Promise(resolve => this.auth.user.subscribe(user => {
+    return new Promise((resolve , reject) => this.auth.user.subscribe(user => {
       data.access = {[user.uid]: 'owner'};
-      this.db.collection(path).add(data).then(r => resolve(r));
+      this.db.collection(path).add(data).then(r => resolve(r)).catch(err => reject(err));
     }));
 
   }
@@ -104,9 +104,9 @@ export class DatabaseServiceService {
 
   updateDocument(path: string, data: any) {
 
-    return new Promise(resolve => this.auth.user.subscribe(user => {
+    return new Promise((resolve, reject) => this.auth.user.subscribe(user => {
       data.access = {[user.uid]: 'owner'};
-      return this.db.doc(path).update(data).then(r => resolve(r));
+      return this.db.doc(path).update(data).then(r => resolve(r)).catch(err => reject(err));
     }));
 
   }
