@@ -42,6 +42,7 @@ import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
 import {AngularFireMessaging} from "@angular/fire/messaging";
 import {mergeMap} from "rxjs/operators";
+import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import {mergeMap} from "rxjs/operators";
     OauthCallbackComponent,
     RegisterParticipantComponent,
     WettbewerbComponent,
-    DatenschutzerklaerungComponent
+    DatenschutzerklaerungComponent,
+    SimpleDialogComponent
   ],
   imports: [
     BrowserModule,

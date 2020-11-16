@@ -31,7 +31,7 @@
 
 <button mat-raised-button id="search"> Route Berechnen</button>
 <button mat-raised-button class="add-button" routerLink="/app/{{partId}}/sponsoren">Abbrechen</button>
-<button mat-raised-button color="primary" (click)="saveRoute()" routerLink="/app/{{partId}}/routen" [disabled]="!group.valid || !routeBerechnet"> Route ({{totalDistance.toFixed(2)}}km) Bestätigen</button>
+<button mat-raised-button color="primary" (click)="saveRoute()" [disabled]="!group.valid || !routeBerechnet"> Route ({{totalDistance.toFixed(2)}}km) Bestätigen</button>
 
 
 <div id="map"></div>

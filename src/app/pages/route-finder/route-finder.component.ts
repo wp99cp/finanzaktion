@@ -6,9 +6,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {} from 'googlemaps';
 
 import {DatabaseServiceService} from '../../services/database-service.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {FormControl, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {SimpleDialogComponent} from '../../dialoges/simple-dialog/simple-dialog.component';
 import MapTypeStyle = google.maps.MapTypeStyle;
 import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
@@ -58,7 +60,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
   ];
   private routeSubst: Subscription;
 
-  constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
+  constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router) {
 
 
     this.routeSubst = this.route.params.subscribe(params => {
@@ -69,8 +71,9 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-    if (this.routeSubst)
+    if (this.routeSubst) {
       this.routeSubst.unsubscribe();
+    }
 
   }
 
@@ -98,7 +101,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
         center: {lat: 47.4176056, lng: 8.5192438},
         styles: this.styleArray,
         disableDefaultUI: true,
-        fullscreenControl: true,   //all other controls works fine
+        fullscreenControl: true,   // all other controls works fine
         zoomControl: true,
       }
     );
@@ -122,28 +125,34 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
 
   calculateAndDisplayRoute(directionsService: DirectionsService, directionsRenderer: DirectionsRenderer): void {
 
-    this.routeBerechnet = true;
+
+    const originQuery = (document.getElementById('start') as HTMLInputElement).value;
+    const destinationQuery = (document.getElementById('end') as HTMLInputElement).value
+
+    if (originQuery === '' || destinationQuery === '') {
+      this.openDialog('Gib eine gültige Adresse ein!');
+      return;
+    }
 
     directionsService.route(
       {
         origin: {
-          query: (document.getElementById('start') as HTMLInputElement).value,
+          query: originQuery,
         },
         destination: {
-          query: (document.getElementById('end') as HTMLInputElement).value,
+          query: destinationQuery,
         },
         travelMode: TravelMode.BICYCLING,
       },
       (response, status) => {
 
         if (status === 'OK') {
-
           directionsRenderer.setDirections(response);
-
+          this.routeBerechnet = true;
         } else {
-
-          window.alert('Google Maps konnte keine Route berechnen! Bitte prüfe deine Adressen, sind diese Vollständig (Strasse, Hausnummer, Ort)?');
-
+          console.log('Error');
+          this.openDialog('Google Maps konnte keine Route berechnen! Bitte prüfe deine Adressen, sind diese Vollständig (Strasse, Hausnummer, Ort)?');
+          return;
         }
       }
     );
@@ -181,10 +190,29 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
     };
 
     this.dbService.createDocument('routes', data)
-      .then(r => console.log(r))
-      .catch(err => alert('Routen können erst ab dem 30. November erfasst werden!'));
+      .then(r => {
+        console.log(r);
+        this.router.navigate(['/app/' + this.partId + '/routen']);
+      })
+      .catch(err => {
+        this.openDialog('Routen können erst ab dem 30. November erfasst werden!');
+      });
+
 
   }
 
+  private openDialog(message: string) {
+
+    const dialogRef = this.dialog.open(SimpleDialogComponent, {
+      width: '500px',
+      data: {message}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+
+  }
 }
 
