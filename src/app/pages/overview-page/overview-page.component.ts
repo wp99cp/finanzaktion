@@ -33,6 +33,7 @@ export class OverviewPageComponent implements OnInit, OnDestroy {
 
           this.dbService.load_participant(this.partID).subscribe(part => {
             this.participant = part;
+          }, err => {
           });
 
           if (!this.partID) {

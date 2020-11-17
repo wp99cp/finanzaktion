@@ -22,7 +22,7 @@ export class RegisterParticipantComponent implements OnInit {
   ngOnInit(): void {
 
     this.participants = this.dbService.load_participants();
-    this.participants.subscribe(console.log)
+    // this.participants.subscribe(console.log);
 
   }
 
