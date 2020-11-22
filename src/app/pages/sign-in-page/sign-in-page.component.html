@@ -25,6 +25,26 @@
       <span class="button-text">Anmelden mit Google</span>
     </button>
 
+    <br>
+    <br>
+
+    <h3>Anmelden mit Benutzername und Passwort</h3>
+    <br>
+    <br>
+
+    <p *ngIf="invalideUsername" id="error">Benutzername oder Passwort falsch!</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Benutzername</mat-label>
+      <input matInput id="email"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Passwort</mat-label>
+      <input matInput id="password" type="password"/>
+    </mat-form-field>
+
+    <button color="primary" mat-raised-button (click)="signInWithUsername()">Anmelden</button>
+    <button mat-raised-button routerLink="/app/registrieren">Account erstellen</button>
+
   </div>
 
 </div>
