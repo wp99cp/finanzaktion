@@ -11,6 +11,8 @@ import {Location} from '@angular/common';
 })
 export class SignInPageComponent implements OnInit {
 
+  public invalideUsername = false;
+
   constructor(
     public fireAuth: AngularFireAuth,
     private router: Router,
@@ -44,6 +46,24 @@ export class SignInPageComponent implements OnInit {
       }
 
     });
+
+
+  }
+
+  signInWithUsername() {
+
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+
+    this.fireAuth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.invalideUsername = false;
+        this.router.navigate(['app/oauth-callback']);
+      })
+      .catch(err => {
+        this.invalideUsername = true;
+        console.log(err);
+      });
 
 
   }

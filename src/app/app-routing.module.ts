@@ -14,6 +14,7 @@ import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.compo
 import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from "./pages/datenschutzerklaerung/datenschutzerklaerung.component";
+import {SignUpComponent} from "./pages/sign-up/sign-up.component";
 
 const routes: Routes = [
 
@@ -94,6 +95,11 @@ const routes: Routes = [
   {
     path: 'datenschutz',
     component: DatenschutzerklaerungComponent
+  },
+
+  {
+    path: 'app/registrieren',
+    component: SignUpComponent
   },
 
 ];

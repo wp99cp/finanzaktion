@@ -43,6 +43,7 @@ import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/date
 import {AngularFireMessaging} from "@angular/fire/messaging";
 import {mergeMap} from "rxjs/operators";
 import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.co
     RegisterParticipantComponent,
     WettbewerbComponent,
     DatenschutzerklaerungComponent,
-    SimpleDialogComponent
+    SimpleDialogComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
