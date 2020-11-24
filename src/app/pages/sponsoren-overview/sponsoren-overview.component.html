@@ -6,11 +6,15 @@
 
   <article *ngIf="(sponsoren | async) as sponsoren  else loadingUserSettings">
 
-    <div class="sponsor" *ngFor="let sponsor of sponsoren" routerLink="erfassen/{{sponsor.id}}">
+    <div class="sponsor" *ngFor="let sponsor of sponsoren">
 
-      <span> {{sponsor.first_name}} </span>
-      <span> {{sponsor.last_name}} </span>
-      <span> {{sponsor.amount}} </span>
+      <div routerLink="erfassen/{{sponsor.id}}">
+        <span> {{sponsor.first_name}} </span>
+        <span> {{sponsor.last_name}} </span>
+        <span> {{sponsor.amount}} </span>
+      </div>
+
+      <span (click)="deleteSponsor(sponsor)"><mat-icon class="delete">delete</mat-icon> </span>
 
     </div>
 
