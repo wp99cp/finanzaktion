@@ -13,7 +13,7 @@ export class SponsorenOverviewComponent implements OnInit {
 
   public sponsoren: Observable<any[]>;
 
-  constructor(dbService: DatabaseServiceService, private route: ActivatedRoute) {
+  constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
 
     this.sponsoren = this.route.params.pipe(mergeMap(params =>
       dbService.load_sponsoren(params.partId)));
@@ -27,7 +27,11 @@ export class SponsorenOverviewComponent implements OnInit {
   }
 
 
+  deleteSponsor(sponsor: any) {
 
+    console.log('Delete: sponsoren/' + sponsor.id);
 
+    this.dbService.delete('sponsoren/' + sponsor.id).then(r => console.log);
 
+  }
 }

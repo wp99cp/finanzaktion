@@ -44,9 +44,12 @@ export class SponsorenErfassenComponent implements OnInit, OnDestroy {
         console.log('Load Values: ' + this.sponsorId);
 
         this.sponsor = this.dbService
-          .load_sponsor(this.sponsorId).pipe(take(1));
+          .load_sponsor(this.sponsorId)
+          .pipe(take(1));
 
         this.sponsor.subscribe(spon => {
+
+          console.log('loaded!!')
 
           this.group.setValue({
             email: spon.email,
