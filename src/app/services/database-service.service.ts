@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {map, mergeMap} from 'rxjs/operators';
+import {map, mergeMap, take} from 'rxjs/operators';
 import {AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable({
@@ -104,7 +104,9 @@ export class DatabaseServiceService {
 
   createDocument(path: string, data: any) {
 
-    return new Promise((resolve, reject) => this.auth.user.subscribe(user => {
+    return new Promise((resolve, reject) => this.auth.user
+      .pipe(take(1))
+      .subscribe(user => {
       data.access = {[user.uid]: 'owner'};
       this.db.collection(path).add(data).then(r => resolve(r)).catch(err => reject(err));
     }));
@@ -114,10 +116,18 @@ export class DatabaseServiceService {
 
   updateDocument(path: string, data: any) {
 
-    return new Promise((resolve, reject) => this.auth.user.subscribe(user => {
+    return new Promise((resolve, reject) => this.auth.user
+      .pipe(take(1))
+      .subscribe(user => {
       data.access = {[user.uid]: 'owner'};
       return this.db.doc(path).update(data).then(r => resolve(r)).catch(err => reject(err));
     }));
+
+  }
+
+  delete(ref: string) {
+
+    return this.db.doc(ref).delete();
 
   }
 
