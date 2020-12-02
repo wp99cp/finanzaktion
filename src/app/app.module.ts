@@ -35,15 +35,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
-import {MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from '@angular/material/button';
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
-import {AngularFireMessaging} from "@angular/fire/messaging";
-import {mergeMap} from "rxjs/operators";
+import {AngularFireMessaging} from '@angular/fire/messaging';
+import {mergeMap} from 'rxjs/operators';
 import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import {ChartsModule} from 'ng2-charts';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     MatSelectModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    ChartsModule
   ],
   providers: [
     AngularFirestore,

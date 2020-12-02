@@ -1,7 +1,33 @@
 <div class="page-container">
 
+  <script src="node_modules/chart.js/src/chart.js"></script>
+
+
   <h1> Übersicht / Auswertung in Echtzeit </h1>
 
-  <p> Details folgen ab dem 30. November...</p>
+  <p>Danke für eure Spende! Wir schätzen euer Engagement für den Cevi Züri 11 sehr.</p>
+
+  <ng-container *ngIf="(statistics | async) as statistics">
+
+    <p><b>Spendenstand:</b> {{statistics.payload.data().totalSpenden.toFixed(2)}} CHF</p>
+    <p><b>Totale Anzahl Kilometer:</b> {{statistics.payload.data().totalKM.toFixed(2)}} km</p>
+
+    <br>
+    <br>
+    <br>
+
+    <p>Unser Ziel ist es {{spendenziel}} CHF zu sammeln, davon haben wir
+      bereits {{statistics.payload.data().totalKM.toFixed(2)}} CHF gesammelt.</p>
+
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+
+  </ng-container>
+
 
 </div>
