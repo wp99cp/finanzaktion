@@ -13,7 +13,7 @@ export class RoutenOverviewComponent implements OnInit {
 
   public routen: Observable<any[]>;
 
-  constructor(dbService: DatabaseServiceService, private route: ActivatedRoute) {
+  constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
 
     this.routen = this.route.params.pipe(mergeMap(params =>
       dbService.load_routen(params.partId)));
@@ -22,5 +22,13 @@ export class RoutenOverviewComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+
+  deleteRoute(route: any) {
+
+    console.log('Delete: routes/' + route.id);
+    this.dbService.delete('routes/' + route.id).then(r => console.log);
+
+  }
+
 
 }
