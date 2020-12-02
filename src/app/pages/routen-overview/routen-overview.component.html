@@ -4,11 +4,17 @@
 
   <article *ngIf="(routen | async) as routen  else loadingUserSettings">
 
-    <div class="route" *ngFor="let route of routen" routerLink="erfassen/{{route.id}}">
+    <div class="route" *ngFor="let route of routen">
+
+      <div routerLink="erfassen/{{route.id}}">
 
       <span> {{route.origin}} </span>
       <span> {{route.destination}} </span>
       <span> {{route.length}} </span>
+
+      </div>
+
+      <span (click)="deleteRoute(route)"><mat-icon class="delete">delete</mat-icon> </span>
 
 
     </div>
