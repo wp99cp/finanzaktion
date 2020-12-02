@@ -131,4 +131,9 @@ export class DatabaseServiceService {
 
   }
 
+  loadStatistics() {
+
+    return this.db.doc('sharedData/statistics').snapshotChanges();
+
+  }
 }
