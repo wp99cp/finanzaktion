@@ -15,6 +15,7 @@ export class LiveFeedComponent {
     scaleShowVerticalLines: false,
     responsive: true
   };
+
   public barChartLabels = ['Restbetrag zum Spendenziel', 'Gesammelte Spenden'];
   public barChartType = 'doughnut';
   public barChartLegend = true;
