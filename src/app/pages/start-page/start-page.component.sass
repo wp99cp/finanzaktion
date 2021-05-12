@@ -1,3 +1,39 @@
+$marg: 850px
+
+@media screen and (max-width: 1000px)
+  $marg: min(100vh, 750px)
+
+.centered
+  margin-top: $marg
+
+.color-banner
+  position: absolute
+  width: 100%
+  height: $marg
+  top: 0
+  right: 0
+  background-color: #becdcf
+  margin-bottom: 200px
+
+
+  .page-title
+    margin-top: min(30%, 175px)
+
+  p, h1, .page-title, .caption-text
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+
+
+.triangle-topleft
+  position: absolute
+  top: $marg - 1px
+  left: 0
+  width: 0
+  height: 0
+  border-top: 35px solid #becdcf
+  border-right: 100vw solid transparent
+
 
 .roules li, .roules p
   margin: 0
@@ -5,13 +41,18 @@
 .button-sign-in
   width: calc(100% - 30px)
   color: #264e54
-  margin: 0 15px 80px 15px !important
+  margin: 10px auto 80px auto !important
   background-color: #4b838b38
+  max-width: 500px
+  display: block
+  z-index: 200
 
 .bicycle
   width: 200px
   height: 200px
-  margin-left: 20%
+  margin: 0 auto
+  padding: 20px 50px 35px 50px
+  display: block
 
 h1
   color: #bd4913ad
