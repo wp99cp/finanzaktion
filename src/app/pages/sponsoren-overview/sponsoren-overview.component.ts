@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {ActivatedRoute} from '@angular/router';
 import {mergeMap} from 'rxjs/operators';
@@ -12,17 +12,37 @@ import {mergeMap} from 'rxjs/operators';
 export class SponsorenOverviewComponent implements OnInit {
 
   public sponsoren: Observable<any[]>;
+  public oldSponsoren: Observable<any[]>;
+  public showOldSponsoren = false;
 
   constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
 
     this.sponsoren = this.route.params.pipe(mergeMap(params =>
       dbService.load_sponsoren(params.partId)));
-    this.sponsoren.subscribe(sp => console.log(sp));
+
+    this.oldSponsoren = this.route.params.pipe(mergeMap(params =>
+      dbService.load_sponsoren_old(params.partId)));
+
+    this.oldSponsoren.subscribe(sp => console.log(sp));
 
   }
 
   ngOnInit(): void {
 
+
+  }
+
+  public show_old_sponsoren(): void {
+
+
+    this.showOldSponsoren = true;
+
+  }
+
+  public copy_old_sponsor(sponsor: any): void {
+
+    this.dbService.createDocument('sponsoren', sponsor);
+    this.showOldSponsoren = false;
 
   }
 

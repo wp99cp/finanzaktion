@@ -8,9 +8,9 @@
 
       <div routerLink="erfassen/{{route.id}}">
 
-      <span> {{route.origin}} </span>
-      <span> {{route.destination}} </span>
-      <span> {{route.length}} </span>
+        <span> {{route.origin}} </span>
+        <span> {{route.destination}} </span>
+        <span> {{route.length}} </span>
 
       </div>
 
@@ -24,8 +24,13 @@
     <br>
     <br>
 
-    <button mat-raised-button class="add-button" routerLink="erfassen">Route erfassen</button>
-
+    <p>
+      <button mat-raised-button class="add-button" routerLink="erfassen">Route erfassen (Interaktive Karte)</button>
+    </p>
+    <p>
+      <button mat-raised-button class="add-button" routerLink="erfassen-upload">Route erfassen (Upload von Tracking-Datei)
+      </button>
+    </p>
   </article>
 
   <!-- Loading Animation -->

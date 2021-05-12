@@ -15,6 +15,7 @@ import {RegisterParticipantComponent} from './pages/register-participant/registe
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from "./pages/datenschutzerklaerung/datenschutzerklaerung.component";
 import {SignUpComponent} from "./pages/sign-up/sign-up.component";
+import {UploadTrackingFileComponent} from "./pages/upload-tracking-file/upload-tracking-file.component";
 
 const routes: Routes = [
 
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'app/:partId/routen/erfassen',
     component: RouteFinderComponent
+  },
+
+  {
+    path: 'app/:partId/routen/erfassen-upload',
+    component: UploadTrackingFileComponent
   },
 
   {

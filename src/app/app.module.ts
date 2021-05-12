@@ -45,6 +45,7 @@ import {mergeMap} from 'rxjs/operators';
 import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {ChartsModule} from 'ng2-charts';
+import { UploadTrackingFileComponent } from './pages/upload-tracking-file/upload-tracking-file.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import {ChartsModule} from 'ng2-charts';
     WettbewerbComponent,
     DatenschutzerklaerungComponent,
     SimpleDialogComponent,
-    SignUpComponent
+    SignUpComponent,
+    UploadTrackingFileComponent
   ],
   imports: [
     BrowserModule,

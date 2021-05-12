@@ -107,9 +107,9 @@ export class DatabaseServiceService {
     return new Promise((resolve, reject) => this.auth.user
       .pipe(take(1))
       .subscribe(user => {
-      data.access = {[user.uid]: 'owner'};
-      this.db.collection(path).add(data).then(r => resolve(r)).catch(err => reject(err));
-    }));
+        data.access = {[user.uid]: 'owner'};
+        this.db.collection(path).add(data).then(r => resolve(r)).catch(err => reject(err));
+      }));
 
   }
 
@@ -119,9 +119,9 @@ export class DatabaseServiceService {
     return new Promise((resolve, reject) => this.auth.user
       .pipe(take(1))
       .subscribe(user => {
-      data.access = {[user.uid]: 'owner'};
-      return this.db.doc(path).update(data).then(r => resolve(r)).catch(err => reject(err));
-    }));
+        data.access = {[user.uid]: 'owner'};
+        return this.db.doc(path).update(data).then(r => resolve(r)).catch(err => reject(err));
+      }));
 
   }
 
@@ -138,4 +138,24 @@ export class DatabaseServiceService {
 
   }
 
+  load_sponsoren_old(partId: any) {
+    if (partId === undefined) {
+      throw new Error('Undefined partId');
+    }
+
+    return this.auth.user.pipe(mergeMap(user => {
+
+      const collRef = this.db.collection('old_sponsoren', p => p
+        .where('sponsor_of', '==', partId)
+        .where('access.' + user.uid, 'in', ['owner']));
+
+      return collRef.snapshotChanges()
+        .pipe(map(docAction => docAction.map(doc => {
+          const data: any = doc.payload.doc.data();
+          data.id = doc.payload.doc.id;
+          return data;
+        })));
+
+    }));
+  }
 }
