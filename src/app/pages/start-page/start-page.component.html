@@ -1,40 +1,66 @@
 <div class="centered">
 
-  <span class="page-title">Erstrample deine Spenden</span>
+  <div class="color-banner">
 
-  <h1>Eine Finanzaktion mal anders</h1>
+    <span class="page-title">Finanzaktion 2021</span>
+
+    <h1>Erstrample deine Spenden</h1>
+
+    <p class="caption-text">
+
+      Jeder mit dem Velo zurückgelegte Kilometer zählt. Sei es zur Schule,
+      in der Freizeit oder im Cevi. Mach jetzt mit bei
+      der Finanzaktion vom Cevi Züri 11. <br> <br>
+
+      <b *ngIf="check_date() else showDate" routerLink="live"> zum Liveticker </b>
+      <ng-template #showDate>
+        <b> 19. bis 26. Juni 2021 </b>
+      </ng-template>
+
+    </p>
+
+    <img src="/assets/animations/bicycle.gif" class="bicycle">
+
+    <button routerLink="app/mitmachen" mat-raised-button class="button-sign-in">
+      Kilometer oder Sponsor erfassen
+    </button>
+
+    <button routerLink="direkt-spende" mat-raised-button class="button-spenden">
+      fixer Beitrag spenden
+    </button>
+
+
+  </div>
+
+  <div class="triangle-topleft"></div>
+
+
+  <h2>So funktioniert es</h2>
 
   <p>
-    Im Jahr 2020 ist vieles anders als gewohnt, so haben wir uns auch für die
-    Finanzaktion eine coole Alternative zu unserem traditionellen Unihockeyturnier
-    überlegen müssen. </p>
-  <p>
-    Dieses Jahr gibt es keine Goals, sondern es werden fleissig Kilometer
-    gesammelt! An unserem erfolgreichen Konzept halten wir aber fest; die
-    Cevianer/innen sammeln im Vorfeld der Aktion Sponsoren. Sportlich wird
-    anschliessend möglichst viel Geld gesammelt. Bist du mit dabei?</p>
-
-  <p>
-    <a routerLink="app/mitmachen">Ja, ich mache mit!</a>
+    Im Vorfeld sammelst du Sponsoren. Die Sponsoren spenden einen kleinen Betrag
+    für jeden Kilometer, den du während der Aktionswoche mit dem Velo zurücklegst.
   </p>
 
+
+  <h3>Kilometer sammeln</h3>
+  <p>Am Samstag 19. Juni starten wir gemeinsam in die Aktionswoche. Ab 14.00 Uhr zählt
+    jeder Kilometer mit dem Velo. Die Aktionswoche endet mit dem Cevi-Program vom 26. Juni.
+  </p>
   <p>
-    Der <a href="https://zh11.ch">Cevi Züri 11</a> ist ein Verein – alle Leiterinnen und Leiter arbeiten ehrenamtlich. Trotzdem sind wir auf Geld
-    angewiesen, damit unseren Teilnehmern jeden Samstag ein spannendes Programm anbieten können. Die Finanzaktion ist
-    für uns eine wichtige Einnahmequelle.
+    Während einer ganzen Woche sammelst du für dich fleissig Kilometer – sei es zur Schule
+    oder Arbeit, in der Freizeit oder im Cevi. Jeder Kilometer mit dem Velo zählt.
   </p>
 
-  <p>
-    <a routerLink="/live">Verfolge unsere Finanzaktion live mit.</a>
+  <p>Wie viele Kilometer wir insgesamt schon gesammelt haben, siehst du in <a routerLink="live">unserem Live-Feed</a>.
   </p>
 
-  <h2>Finanzaktion 2020 - Velofahr-Challenge</h2>
 
-  <p>
-    Im Vorfeld sammelst du Sponsoren. Die Sponsoren spenden
-    einen kleinen Betrag pro Kilometer, welcher von dir während der Aktionswoche
-    mit dem Velo zurücklegt wird (fairerweise zählen E-Bikes nicht).
-  </p>
+  <h3>Abgerechnet wird nach der Aktion</h3>
+  <p>Für die Abrechnung zählen nur die Kilometer, die du während der Aktion mit
+    dem Velo zurückgelegt hast. Deine Sponsoren erhalten nach der Woche eine
+    Rechnung per Mail. Natürlich darfst du deinen Sponsoren die Rechnung auch
+    persönlich überreichen, wir senden sie dir in diesem Fall per Post zu.</p>
 
   <figure>
     <img alt="Wochenübersicht eines Lagers." class="fullscreen"
@@ -44,38 +70,28 @@
     <figcaption> Das Velo ist ein fester Bestandteil unserer Cevi-Programme.</figcaption>
   </figure>
 
-  <h3>Kilometer sammeln</h3>
-  <p> Ab dem 30. November sammelt jede/r Cevianer/in für sich fleissig
-    Kilometer – sei es zur Schule oder Arbeit, in der Freizeit oder im Cevi,
-    jeder zurückgelegte Kilometer mit dem Velo zählt. Nach Absprache
-    mit uns zählt auch das Trottinett.</p>
-  <p>
-    Am Samstag, dem 5. Dezember, endet die Aktionswoche mit einer Velotour
-    zusammen mit deiner Stufe, die dort zurückgelegten Kilometer zählen
-    ebenfalls. <a routerLink="beispiele/sinai">Route der Stufe Sinai.</a>
-  </p>
+  <!-- Sponsoren -->
 
-  <h3>Abgerechnet wird nach der Aktion</h3>
-  <p>Für die Abrechnung zählen nur die Kilometer, die du während der Aktion mit
-    dem Velo zurückgelegt hast. Deine Sponsoren erhalten nach der Woche eine
-    Rechnung per Mail. Natürlich darfst du deinen Sponsoren die Rechnung auch
-    persönlich überreichen, wir senden sie dir in diesem Fall per Post zu.</p>
 
-  <h3>Tipps zur Sponsorensuche</h3>
+  <h2>Tipps zur Sponsorensuche</h2>
   <p>Wir wissen aus eigener Erfahrung, dass die Sponsorensuche nicht immer einfach ist. Trotzdem versuche es! Wir sind
-    auch auf kleinste Beiträge angewiesen. Frage bei deinen Nachbaren, Götti, Gotti, Grosseltern und Verwandten oder bei
-    deinen Lehrerinnen und Lehren nach. Rechenbeispiel: Du findest 8 Sponsoren, jeder von ihnen spendet (nur) 50 Rappen
+    auch auf kleinste Beiträge angewiesen. Frage bei deinen Nachbaren, Götti, Gotti, Grosseltern und Verwandten oder
+    bei
+    deinen Lehrerinnen und Lehren nach. Rechenbeispiel: Du findest 8 Sponsoren, jeder von ihnen spendet (nur) 50
+    Rappen
     pro Kilometer. Wenn du in der Woche insgesamt 20 Kilometer mit dem Velo zurücklegst, dann sammelst du schon 80
     CHF für den Cevi! Eine grossartige Leistung!</p>
   <p>
     Falls jemand das «Risiko» einer Spende pro Kilometer nicht eingehen will, kann er auch einen Pauschalen Betrag
-    spenden. Wähle beim Erfassen des Sponsors einfach die Option "Pauschalbetrag". Der Sponsor erhält so ebenfalls einen
+    spenden. Wähle beim Erfassen des Sponsors einfach die Option "Pauschalbetrag". Der Sponsor erhält so ebenfalls
+    einen
     Einzahlungsschein von uns.
   </p>
 
   <p>
     <a routerLink="app/mitmachen">Mit Sponsoren sammeln beginnen!</a>
   </p>
+
 
   <h2>Wettbewerb</h2>
 
@@ -90,11 +106,13 @@
     <li><p>
       Während der gesamten Woche kannst du uns deine kreativsten Fotos mit dir und deinem Velo zusenden (über
       Instagram @cevizh11 oder per Mail an finak@zh11.ch). Unter allen Einsendungen wählt eine Jurry das
-      beste/kreativste Foto aus, der/die Gewinner/in erhält einen Hajk-Gutschein im Wert von 30 CHF. Zusätzlich verlosen
+      beste/kreativste Foto aus, der/die Gewinner/in erhält einen Hajk-Gutschein im Wert von 30 CHF. Zusätzlich
+      verlosen
       wir unter allen Einsendungen zwei weitere Gutscheine im Wert von 10 CHF, mitmachen lohnt sich also!
     </p></li>
-
   </ul>
+
+
   <h2> Warum eine Finanzaktion?</h2>
   <p>Um jeden Samstag unseren Mitgliederinnen und Mitgliedern ein spannendes
     und lehrreiches Programm zu bieten, sind wir auf finanzielle Unterstützung angewiesen.
@@ -125,5 +143,6 @@
     Challenge. Vielen Dank für Deine Unterstützung und ich freue mich bereits
     heute auf eine lässige und sportliche Finanzaktion.</p>
   <p>Tiger, Kassier</p>
+
 
 </div>

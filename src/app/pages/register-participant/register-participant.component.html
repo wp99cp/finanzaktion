@@ -14,7 +14,8 @@
 
       <p *ngIf="participants.length > 0">Wähle ein/e erfasste Cevianer/innen aus der Liste.</p>
 
-      <div *ngFor="let part of participants " routerLink="/app/{{part.id}}/mitmachen" class="cevianer" (click)="setPart(part.id)">
+      <div *ngFor="let part of participants " routerLink="/app/{{part.id}}/mitmachen" class="cevianer"
+           (click)="setPart(part.id)">
         <span>{{part.first_name}}</span>
         <span>{{part.last_name}}</span>
         <span> v/o {{part.cevi_name}}</span>
@@ -23,7 +24,12 @@
     </ng-container>
   </ng-container>
 
-  <h3>Neue/r Cevianer/innen erfassen:</h3>
+
+  <br>
+  <br>
+
+  <h3>Neue/r Cevianer/in erfassen:</h3>
+  <p>Jedes Kind brauch einen eigenen Account. Sponsoren können anschliessend für jedes Kind erfasst werden.</p>
 
   <br>
   <br>
@@ -47,7 +53,9 @@
     <input [formControl]="ceviName" matInput/>
   </mat-form-field>
 
-  <button class="button-add" mat-raised-button [disabled]="firstName.invalid || lastName.invalid" (click)="registerPart()">Cevianer speichern</button>
+  <button class="button-add" mat-raised-button [disabled]="firstName.invalid || lastName.invalid"
+          (click)="registerPart()">Cevianer erfassen
+  </button>
 
 
 </div>
