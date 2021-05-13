@@ -13,8 +13,10 @@ import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OauthCallbackComponent} from './page/oauth-callback/oauth-callback.component';
 import {RegisterParticipantComponent} from './pages/register-participant/register-participant.component';
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
-import {DatenschutzerklaerungComponent} from "./pages/datenschutzerklaerung/datenschutzerklaerung.component";
-import {SignUpComponent} from "./pages/sign-up/sign-up.component";
+import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
+import {SignUpComponent} from './pages/sign-up/sign-up.component';
+import {UploadTrackingFileComponent} from './pages/upload-tracking-file/upload-tracking-file.component';
+import {DirektSpendeComponent} from './pages/direkt-spende/direkt-spende.component';
 
 const routes: Routes = [
 
@@ -31,6 +33,11 @@ const routes: Routes = [
   {
     path: 'gewinnen',
     component: WettbewerbComponent
+  },
+
+  {
+    path: 'direkt-spende',
+    component: DirektSpendeComponent
   },
 
   {
@@ -60,6 +67,11 @@ const routes: Routes = [
   {
     path: 'app/:partId/routen/erfassen',
     component: RouteFinderComponent
+  },
+
+  {
+    path: 'app/:partId/routen/erfassen-upload',
+    component: UploadTrackingFileComponent
   },
 
   {
