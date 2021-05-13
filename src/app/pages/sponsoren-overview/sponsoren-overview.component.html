@@ -4,28 +4,35 @@
 
   <h1>Meine Sponsoren.</h1>
 
+  <p>Sponsoren können von der letzten Aktion übernommen werden. Klicke hierzu auf "Sponsor übernehmen".</p>
+
+
   <article *ngIf="(sponsoren | async) as sponsoren  else loadingUserSettings">
 
-    <div class="sponsor" *ngFor="let sponsor of sponsoren">
+    <ng-container *ngIf="sponsoren.length > 0">
+      <div class="sponsor" *ngFor="let sponsor of sponsoren">
 
-      <div routerLink="erfassen/{{sponsor.id}}">
-        <span> {{sponsor.first_name}} </span>
-        <span> {{sponsor.last_name}} </span>
-        <span> {{sponsor.amount}} </span>
+        <div routerLink="erfassen/{{sponsor.id}}">
+          <span> {{sponsor.first_name}} </span>
+          <span> {{sponsor.last_name}} </span>
+          <span> {{sponsor.amount}} </span>
+        </div>
+
+        <span (click)="deleteSponsor(sponsor)"><mat-icon class="delete">delete</mat-icon> </span>
+
       </div>
 
-      <span (click)="deleteSponsor(sponsor)"><mat-icon class="delete">delete</mat-icon> </span>
+      <i>Klicke auf einen Sponsor, um ihn zu bearbeiten.</i>
 
-    </div>
-
-    <i>Klicke auf einen Sponsor, um ihn zu bearbeiten.</i>
+    </ng-container>
     <br>
     <br>
     <p>
-      <button class="add-button" mat-raised-button routerLink="erfassen">Neuer Sponsor erfassen</button>
+      <button class="add-button" mat-raised-button routerLink="erfassen">neue/r Sponsor/in erfassen</button>
     </p>
     <p>
-      <button class="add-button" mat-raised-button (click)="show_old_sponsoren()">Sponsor von letzter Aktion übernehmen
+      <button class="add-button" mat-raised-button (click)="show_old_sponsoren()">Sponsor übernehmen (von letzter
+        Aktion)
       </button>
     </p>
 

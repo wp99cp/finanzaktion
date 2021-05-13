@@ -46,6 +46,8 @@ import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.co
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {ChartsModule} from 'ng2-charts';
 import { UploadTrackingFileComponent } from './pages/upload-tracking-file/upload-tracking-file.component';
+import { DirektSpendeComponent } from './pages/direkt-spende/direkt-spende.component';
+import { QAndAComponent } from './pages/subcomponents/q-and-a/q-and-a.component';
 
 
 @NgModule({
@@ -71,7 +73,9 @@ import { UploadTrackingFileComponent } from './pages/upload-tracking-file/upload
     DatenschutzerklaerungComponent,
     SimpleDialogComponent,
     SignUpComponent,
-    UploadTrackingFileComponent
+    UploadTrackingFileComponent,
+    DirektSpendeComponent,
+    QAndAComponent
   ],
   imports: [
     BrowserModule,

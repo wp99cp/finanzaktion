@@ -1,26 +1,32 @@
 <div class="centered">
 
+  <span class="page-title">Routen</span>
+
   <h1> Meine Routen</h1>
 
   <article *ngIf="(routen | async) as routen  else loadingUserSettings">
 
-    <div class="route" *ngFor="let route of routen">
+    <ng-container *ngIf="routen.length > 0">
 
-      <div routerLink="erfassen/{{route.id}}">
+      <div class="route" *ngFor="let route of routen">
 
-        <span> {{route.origin}} </span>
-        <span> {{route.destination}} </span>
-        <span> {{route.length}} </span>
+        <div routerLink="erfassen/{{route.id}}">
+
+          <span> {{route.origin}} </span>
+          <span> {{route.destination}} </span>
+          <span> {{route.length}} </span>
+
+        </div>
+
+        <span (click)="deleteRoute(route)"><mat-icon class="delete">delete</mat-icon> </span>
+
 
       </div>
 
-      <span (click)="deleteRoute(route)"><mat-icon class="delete">delete</mat-icon> </span>
+      <br>
+      <i>Klicke auf einen Sponsor, um ihn zu bearbeiten.</i>
 
-
-    </div>
-
-    <br>
-    <i>Klicke auf einen Sponsor, um ihn zu bearbeiten.</i>
+    </ng-container>
     <br>
     <br>
 
@@ -28,7 +34,8 @@
       <button mat-raised-button class="add-button" routerLink="erfassen">Route erfassen (Interaktive Karte)</button>
     </p>
     <p>
-      <button mat-raised-button class="add-button" routerLink="erfassen-upload">Route erfassen (Upload von Tracking-Datei)
+      <button mat-raised-button class="add-button" routerLink="erfassen-upload">Route erfassen (Upload von
+        Tracking-Datei)
       </button>
     </p>
   </article>

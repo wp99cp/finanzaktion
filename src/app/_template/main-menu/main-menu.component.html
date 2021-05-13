@@ -17,14 +17,14 @@
 
     <li routerLink="/live" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
       <mat-icon class="nav-icon"> insert_chart_outlined</mat-icon>
-      <a> Spendenstand </a>
+      <a> Spendenstand / Live Feed </a>
     </li>
 
     <h4> Meine Finanzaktion </h4>
 
-    <li routerLink="/app/mitmachen" routerLinkActive="active-link" >
-      <mat-icon class="nav-icon"> home</mat-icon>
-      <a> Übersicht </a>
+    <li routerLink="/app/mitmachen" routerLinkActive="active-link">
+      <mat-icon class="nav-icon"> people</mat-icon>
+      <a> Account wechseln </a>
     </li>
 
     <ng-container *ngIf="userService.partId !== undefined">
@@ -52,7 +52,8 @@
       <a matTooltip="Einstellungen / Infos zu meinem Konto">Konto / Einstellungen</a>
     </li>
 
-    <li (click)="signOut()">
+
+    <li (click)="signOut()" *ngIf=" (fireAuth.authState | async)">
       <mat-icon class="nav-icon"></mat-icon>
       <a routerLink="/">Abmelden</a>
     </li>
