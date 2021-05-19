@@ -2,9 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 
 // import {} from 'googlemaps';
 // @ts-ignore
-
-import {} from 'googlemaps';
-
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -142,7 +139,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
         destination: {
           query: destinationQuery,
         },
-        travelMode: TravelMode.BICYCLING,
+        travelMode: TravelMode.WALKING,
       },
       (response, status) => {
 
@@ -195,7 +192,7 @@ export class RouteFinderComponent implements OnInit, OnDestroy {
         this.router.navigate(['/app/' + this.partId + '/routen']);
       })
       .catch(err => {
-        this.openDialog('Routen können erst ab dem 30. November erfasst werden!');
+        this.openDialog('Routen können erst ab dem 19. Juni erfasst werden!');
       });
 
 
