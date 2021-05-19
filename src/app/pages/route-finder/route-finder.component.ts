@@ -1,7 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
+
 // import {} from 'googlemaps';
 // @ts-ignore
+import {} from 'googlemaps';
+
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -13,7 +16,6 @@ import DirectionsResult = google.maps.DirectionsResult;
 import TravelMode = google.maps.TravelMode;
 import DirectionsService = google.maps.DirectionsService;
 import DirectionsRenderer = google.maps.DirectionsRenderer;
-
 
 @Component({
   selector: 'app-route-finder',
