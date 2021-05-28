@@ -22,8 +22,8 @@
       <h3> {{liveContainer.title}} </h3>
       <p> {{liveContainer.content}} </p>
 
-      <figure>
-      <img src="{{liveContainer.img}}">
+      <figure style="max-width: 760px;">
+        <img src="{{liveContainer.img}}" class="fullscreen">
       </figure>
 
     </div>
@@ -44,16 +44,21 @@
         bereits {{liveContainer.fundraising.total_CHF.toFixed(2)}} CHF gesammelt. Insgesamt haben die Leiter/innen und
         Teilnehmer des Cevi Züri 11 bereits {{liveContainer.fundraising.total_km.toFixed(2)}} km zurückgelegt.</p>
 
-      <br>
-
-      <canvas baseChart
-              [datasets]="[{
+      <figure style="max-width: 760px">
+        <canvas baseChart style=" padding: 35px"
+                [datasets]="[{
+               backgroundColor: [
+                'rgba(151, 191, 37, 0.75)',
+                'rgba(229, 53, 44, 0.6)'
+               ],
+               borderWidth: 2,
                 data: [liveContainer.fundraising.total_CHF.toFixed(2), (spendenziel - liveContainer.fundraising.total_CHF.toFixed(2)) > 0 ? (spendenziel - liveContainer.fundraising.total_CHF.toFixed(2)) : 0], label: 'gesammelt'}]"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [legend]="barChartLegend"
-              [chartType]="barChartType">
-      </canvas>
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </figure>
 
     </div>
 
