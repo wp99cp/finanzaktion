@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -10,6 +11,8 @@ import {Observable} from 'rxjs';
 })
 export class LiveFeedComponent {
 
+  public liveFeed;
+
   public statistics: Observable<any>;
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -17,24 +20,19 @@ export class LiveFeedComponent {
   };
 
   public barChartLabels = ['Restbetrag zum Spendenziel', 'Gesammelte Spenden'];
-  public barChartType = 'doughnut';
+  public barChartType = 'pie';
   public barChartLegend = true;
   public barChartData = [];
   public spendenziel = 2_500;
 
-  constructor(dbService: DatabaseServiceService) {
+  constructor(private dbService: DatabaseServiceService) {
 
-    this.statistics = dbService.loadStatistics();
-
-    this.statistics.subscribe(doc => {
-
-      const totalSpenden = doc.payload.data().totalSpenden;
-      const delta = this.spendenziel - totalSpenden;
-
-      this.barChartData = [
-        {data: [delta > 0 ? delta : 0, totalSpenden], label: 'gesammelt'},
-      ];
-    });
+    this.liveFeed = this.dbService.loadLiveFeed()
+      .pipe(map(docAction => docAction.map(doc => {
+        const data: any = doc.payload.doc.data();
+        data.id = doc.payload.doc.id;
+        return data;
+      })));
 
   }
 
