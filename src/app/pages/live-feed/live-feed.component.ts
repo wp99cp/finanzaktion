@@ -19,7 +19,7 @@ export class LiveFeedComponent {
     responsive: true
   };
 
-  public barChartLabels = ['Restbetrag zum Spendenziel', 'Gesammelte Spenden'];
+  public barChartLabels = [ 'Gesammelte Spenden', 'Restbetrag zum Spendenziel'];
   public barChartType = 'pie';
   public barChartLegend = true;
   public barChartData = [];
