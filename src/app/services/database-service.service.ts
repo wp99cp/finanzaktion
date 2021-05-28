@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {map, mergeMap, take} from 'rxjs/operators';
 import {AngularFireAuth} from '@angular/fire/auth';
+import FieldValue = firestore.FieldValue;
+import {firestore} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -157,5 +159,15 @@ export class DatabaseServiceService {
         })));
 
     }));
+  }
+
+  loadLiveFeed() {
+
+    return this.db.collection('sharedData/statistics/live-feed', ref =>
+      ref
+        .where('date', '<=', new Date())
+        .orderBy('date',  'desc')
+    ).snapshotChanges();
+
   }
 }

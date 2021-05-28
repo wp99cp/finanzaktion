@@ -3,64 +3,62 @@
 <p>Auf dieser Seite erfährst du stets den aktuellen Spendenstand, sowie viele Spannende Eindrücke in unsere
   Aktionswoche. Danke für eure Spende! Wir schätzen euer Engagement für den Cevi Züri 11 sehr. .</p>
 
+<script src="node_modules/chart.js/src/chart.js"></script>
 
-<div class="live-feed">
 
+<div class="live-feed" *ngIf="(liveFeed | async) as liveFeed">
 
-  <div class="live-container">
-    <span class="container-time">Montag, 17.00 Uhr</span>
-    <div class="container-content">
+  <ng-container *ngFor="let liveContainer of liveFeed">
+    <div class="live-container" *ngIf="liveContainer.type == 'text'">
 
-      <h3>Titel eines news Beitrages</h3>
+    <span class="container-time"> {{liveContainer.date.toDate().toLocaleString('de-CH', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      hour: 'numeric',
+      minute: 'numeric'
+    })}} </span>
 
-      <p>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-        going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
-        The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-      </p>
-      <p>
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
-        1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original
-        form, accompanied by English versions from the 1914 translation by H. Rackham.
-      </p>
+      <h3> {{liveContainer.title}} </h3>
+      <p> {{liveContainer.content}} </p>
 
+      <figure>
+      <img src="{{liveContainer.img}}">
+      </figure>
 
     </div>
-  </div>
 
-  <div class="live-container">
-    <span class="container-time">Montag, 13.00 Uhr</span>
-    <div class="container-content">
+    <div class="live-container" *ngIf="liveContainer.type == 'fundraising'">
 
-      <script src="node_modules/chart.js/src/chart.js"></script>
+      <span class="container-time"> {{liveContainer.date.toDate().toLocaleString('de-CH', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        hour: 'numeric',
+        minute: 'numeric'
+      })}} </span>
 
-      <ng-container *ngIf="(statistics | async) as statistics">
+      <h3> {{liveContainer.title}} </h3>
 
-        <p><b>Spendenstand:</b> {{statistics.payload.data().totalSpenden.toFixed(2)}} CHF</p>
-        <p><b>Totale Anzahl Kilometer:</b> {{statistics.payload.data().totalKM.toFixed(2)}} km</p>
+      <p>Unser Ziel ist es {{spendenziel}} CHF zu sammeln, davon haben wir
+        bereits {{liveContainer.fundraising.total_CHF.toFixed(2)}} CHF gesammelt. Insgesamt haben die Leiter/innen und
+        Teilnehmer des Cevi Züri 11 bereits {{liveContainer.fundraising.total_km.toFixed(2)}} km zurückgelegt.</p>
 
-        <br>
-        <br>
-        <br>
+      <br>
 
-        <p>Unser Ziel ist es {{spendenziel}} CHF zu sammeln, davon haben wir
-          bereits {{statistics.payload.data().totalSpenden.toFixed(2)}} CHF gesammelt.</p>
-        <canvas baseChart
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="barChartType">
-        </canvas>
-
-      </ng-container>
+      <canvas baseChart
+              [datasets]="[{
+                data: [liveContainer.fundraising.total_CHF.toFixed(2), (spendenziel - liveContainer.fundraising.total_CHF.toFixed(2)) > 0 ? (spendenziel - liveContainer.fundraising.total_CHF.toFixed(2)) : 0], label: 'gesammelt'}]"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
 
     </div>
-  </div>
+
+  </ng-container>
+
 
 </div>
 
