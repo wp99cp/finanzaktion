@@ -20,7 +20,7 @@
     })}} </span>
 
       <h3> {{liveContainer.title}} </h3>
-      <p> {{liveContainer.content}} </p>
+      <p [innerHTML]="liveContainer.content"> </p>
 
       <figure style="max-width: 760px;">
         <img src="{{liveContainer.img}}" class="fullscreen">
