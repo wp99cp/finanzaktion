@@ -23,7 +23,7 @@ export class LiveFeedComponent {
   public barChartType = 'pie';
   public barChartLegend = true;
   public barChartData = [];
-  public spendenziel = 2_500;
+  public spendenziel = 4_500;
 
   constructor(private dbService: DatabaseServiceService) {
 
