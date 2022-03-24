@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // @ts-ignore
-import { version } from '../../../../package.json';
+import version from '../../../../package.json';
 // @ts-ignore
-import { copyrights } from '../../../../package.json';
+import copyrights from '../../../../package.json';
 
 @Component({
   selector: 'app-template-footer',
@@ -14,7 +14,8 @@ export class TemplateFooterComponent implements OnInit {
   public version: string = version;
   public copyrights: string = copyrights;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

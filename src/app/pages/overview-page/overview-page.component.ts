@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {DatabaseServiceService} from '../../services/database-service.service';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-overview-page',
