@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {TemplateHeaderComponent} from '../template-header/template-header.component';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-main-menu',

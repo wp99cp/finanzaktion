@@ -55,6 +55,7 @@ export class UploadTrackingFileComponent implements OnDestroy {
 
     fr.onload = async () => {
 
+      // @ts-ignore
       const gpx = new gpxParser();
       gpx.parse(fr.result);
 
