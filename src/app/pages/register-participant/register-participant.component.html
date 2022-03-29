@@ -2,11 +2,10 @@
 
   <span class="page-title"> Meine Angaben </span>
 
-  <h1>Persönliche Angaben zum Cevianer/zur Cevianerinn.</h1>
+  <h1>Persönliche Angaben zum Cevianer/zur Cevianerin.</h1>
 
 
-  <p>Damit wir die Spenden korrekt zuordnen können, musst du uns verraten wie du bzw. deine Kinder heissen.
-    <b>Eltern können mehrere Kinder eintragen </b> und so die Spenden/Kilometer aller Kinder mit dem selben Login
+  <p><b>Eltern können mehrere Kinder eintragen </b> und so die Spenden/Sponsoren aller Kinder mit dem selben Login
     verwalten.</p>
 
   <ng-container *ngIf="(participants | async)?.length > 0">
@@ -28,8 +27,8 @@
   <br>
   <br>
 
-  <h3>Neue/r Cevianer/in erfassen:</h3>
-  <p>Jedes Kind brauch einen eigenen Account. Sponsoren können anschliessend für jedes Kind erfasst werden.</p>
+  <h3>Kind erfassen:</h3>
+  <p>Jedes Kind soll separat erfasst werden. Sponsoren können anschliessend pro Kind eingetragen werden.</p>
 
   <br>
   <br>
@@ -54,7 +53,7 @@
   </mat-form-field>
 
   <button class="button-add" mat-raised-button [disabled]="firstName.invalid || lastName.invalid"
-          (click)="registerPart()">Cevianer erfassen
+          (click)="registerPart()">Cevianer/in erfassen
   </button>
 
 

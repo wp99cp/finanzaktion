@@ -41,6 +41,10 @@ export class SponsorenOverviewComponent implements OnInit {
 
   public copy_old_sponsor(sponsor: any): void {
 
+    if (sponsor.donation_type === 'per_km') {
+      sponsor.donation_type = 'per_goal';
+    }
+
     this.dbService.createDocument('sponsoren', sponsor);
     this.showOldSponsoren = false;
 

@@ -20,29 +20,29 @@
       <a> Spendenstand / Live Feed </a>
     </li>
 
-    <h4> Meine Finanzaktion </h4>
+    <ng-container  *ngIf=" (fireAuth.authState | async) else login">
+    <h4> Meine Sponsoren </h4>
 
     <li routerLink="/app/mitmachen" routerLinkActive="active-link">
-      <mat-icon class="nav-icon"> people</mat-icon>
-      <a> Account wechseln </a>
+      <mat-icon class="nav-icon"> account_circle </mat-icon>
+      <a>zwischen Kindern wechseln</a>
     </li>
 
-    <ng-container *ngIf="userService.partId !== undefined">
+  </ng-container>
 
-      <li routerLink="/app/{{userService.partId}}/sponsoren" routerLinkActive="active-link">
-        <mat-icon class="nav-icon"> attach_money</mat-icon>
-        <a> Meine Sponsoren </a>
+    <ng-template #login>
+      <h4> Meine Sponsoren </h4>
+
+      <li routerLink="/app/anmelden" routerLinkActive="active-link">
+        <mat-icon class="nav-icon"> login </mat-icon>
+        <a> Anmelden </a>
       </li>
 
-      <li routerLink="/app/{{userService.partId}}/routen" routerLinkActive="active-link">
-        <mat-icon class="nav-icon"> directions_bike</mat-icon>
-        <a> Meine Routen </a>
-      </li>
-    </ng-container>
+    </ng-template>
 
   </ul>
 
-  <ul class="bottom">
+  <ul class="bottom" *ngIf=" (fireAuth.authState | async)">
     <hr/>
 
     <h4> Einstellungen und Konto </h4>
@@ -53,8 +53,8 @@
     </li>
 
 
-    <li (click)="signOut()" *ngIf=" (fireAuth.authState | async)">
-      <mat-icon class="nav-icon"></mat-icon>
+    <li (click)="signOut()" >
+      <mat-icon class="nav-icon"> logout</mat-icon>
       <a routerLink="/">Abmelden</a>
     </li>
   </ul>
