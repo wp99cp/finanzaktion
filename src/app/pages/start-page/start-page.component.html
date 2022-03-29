@@ -2,9 +2,9 @@
 
   <div class="color-banner">
 
-    <span class="page-title">Finanzaktion 2021</span>
+    <span class="page-title">Finanzaktion 2022</span>
 
-    <h1>Erstrample deine Spenden</h1>
+    <h1>UNIHOCKEY - PLAUSCH - TURNIER</h1>
 
     <p class="caption-text">
 
@@ -12,17 +12,17 @@
       in der Freizeit oder im Cevi. Mach jetzt mit bei
       der Finanzaktion vom Cevi Züri 11. <br> <br>
 
-      <b *ngIf="check_date() else showDate" routerLink="live"> zum Liveticker </b>
+      <b *ngIf="check_date() else showDate" style="cursor: pointer" routerLink="live"> zum Liveticker </b>
       <ng-template #showDate>
         <b> 19. bis 26. Juni 2021 </b>
       </ng-template>
 
     </p>
 
-    <img src="/assets/animations/bicycle.gif" class="bicycle">
+    <img src="/assets/animations/player.png" class="bicycle">
 
     <button routerLink="app/mitmachen" mat-raised-button class="button-sign-in">
-      Kilometer oder Sponsor erfassen
+      Erfasse deine Sponsor online
     </button>
 
     <button routerLink="direkt-spende" mat-raised-button class="button-spenden">
