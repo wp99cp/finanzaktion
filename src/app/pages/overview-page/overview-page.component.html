@@ -1,6 +1,6 @@
 <div class="centered">
 
-  <span class="page-title"> Finanzaktion 2022</span>
+  <span class="page-title"> Finanzaktion 2022 </span>
 
   <ng-container *ngIf="isSignedIn else linkToLogInPage">
     <ng-container *ngIf="participant">
@@ -17,7 +17,8 @@
         <p class="account-name"><b>Account von:</b> {{participant.first_name}} {{participant.last_name}} <br>
 
 
-          <button class="nav-button mat-button-wrapper" color="green" mat-button-wrapper routerLink="/app/mitmachen"> zwischen Kindern
+          <button class="nav-button mat-button-wrapper" color="green" mat-button-wrapper routerLink="/app/mitmachen">
+            zwischen Kindern
             wechseln
           </button>
 
@@ -32,8 +33,11 @@
 
 
     <p>Damit du Sponsoren online erfassen kannst musst du dich anmelden. Verwende hierzu einfach deinen
-      Google Account oder erstelle einen Account mit Benutzernamen und Passwort. <a routerLink="/app/anmelden"> Anmelden
-        und loslegen!</a></p>
+      Google Account oder erstelle einen Account mit Benutzernamen und Passwort.
+    </p>
+    <p>
+      <a routerLink="/app/anmelden"> Anmelden und loslegen!</a>
+    </p>
   </ng-template>
 
   <app-q-and-a></app-q-and-a>
