@@ -2,9 +2,9 @@
 
   <div class="sign-in-container">
 
-    <h1>Finanzaktion 2020</h1>
+    <h1>Finanzaktion 2022</h1>
 
-    <h3>Melde dich mit einem Google Account an.</h3>
+    <h3>Melde dich an, um deine Sponsoren zu erfassen</h3>
 
     <button class="sign-in-button" (click)="signIn()">
         <span class="large-button__icon">
@@ -25,12 +25,8 @@
       <span class="button-text">Anmelden mit Google</span>
     </button>
 
-    <br>
-    <br>
 
-    <h3>Anmelden mit Benutzername und Passwort</h3>
-    <br>
-    <br>
+    <p>oder mit Anmelden mit Benutzername und Passwort</p>
 
     <p *ngIf="invalideUsername" id="error">Benutzername oder Passwort falsch!</p>
     <mat-form-field appearance="fill">

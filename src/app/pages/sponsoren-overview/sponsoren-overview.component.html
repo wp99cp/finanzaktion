@@ -4,7 +4,9 @@
 
   <h1>Meine Sponsoren.</h1>
 
-  <p>Sponsoren können von der letzten Aktion übernommen werden. Klicke hierzu auf "Sponsor übernehmen".</p>
+  <p>Sponsoren können von der letzten Aktion übernommen werden. Klicke hierzu auf "Sponsor übernehmen". Achtung, dabei
+    werden die Beiträge von der letzten Aktion automatisch übernommen, können aber anschliessend manuell angepasst
+    werden. Beiträge pro Kilometer aus dem letzten Jahr werden 1-zu-1 in Beiträge pro Goal umgerechnet.</p>
 
 
   <article *ngIf="(sponsoren | async) as sponsoren  else loadingUserSettings">
@@ -63,14 +65,6 @@
   <ng-template #loadingUserSettings>
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
-
-  <br>
-  <br>
-
-  <h3>Eine Velostrecke erfassen</h3>
-  <p>Sobald die Aktionswoche gestartet ist, kannst du hier deine Velo-Strecken eintragen: <br> <a
-    routerLink="../routen">Velostrecken
-    eintragen</a> oder <a routerLink="../mitmachen">Zurück zur Übersicht</a></p>
 
 
 </div>
