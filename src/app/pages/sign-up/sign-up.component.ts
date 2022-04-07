@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {auth} from 'firebase/app';
 import * as firebaseui from 'firebaseui';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
+import auth = firebase.auth;
 
 @Component({
   selector: 'app-sign-up',

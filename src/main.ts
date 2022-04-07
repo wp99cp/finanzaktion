@@ -12,5 +12,6 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 window.addEventListener('beforeinstallprompt', event => {
+  // @ts-ignore
   this.promptEvent = event;
 });

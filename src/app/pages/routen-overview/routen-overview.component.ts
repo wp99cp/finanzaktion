@@ -15,6 +15,7 @@ export class RoutenOverviewComponent implements OnInit {
 
   constructor(private dbService: DatabaseServiceService, private route: ActivatedRoute) {
 
+    // @ts-ignore
     this.routen = this.route.params.pipe(mergeMap(params =>
       dbService.load_routen(params.partId)));
     this.routen.subscribe(sp => console.log(sp));

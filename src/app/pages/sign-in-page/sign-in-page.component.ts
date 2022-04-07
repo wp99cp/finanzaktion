@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {auth} from 'firebase/app';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -38,7 +38,7 @@ export class SignInPageComponent implements OnInit {
 
     this.location.replaceState('app/oauth-callback');
 
-    this.fireAuth.signInWithRedirect(new auth.GoogleAuthProvider())
+    this.fireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     this.fireAuth.currentUser.then((user) => {
 
       if (user !== null) {

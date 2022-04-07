@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {DatabaseServiceService} from '../../services/database-service.service';
-import {Observable} from "rxjs";
-import {UserService} from "../../services/user.service";
+import {Observable} from 'rxjs';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-register-participant',

@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {map, mergeMap, take} from 'rxjs/operators';
-import {AngularFireAuth} from '@angular/fire/auth';
-import FieldValue = firestore.FieldValue;
-import {firestore} from 'firebase';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'

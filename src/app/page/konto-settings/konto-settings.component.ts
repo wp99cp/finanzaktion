@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {DatabaseServiceService} from '../../services/database-service.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {take} from "rxjs/operators";
+import {take} from 'rxjs/operators';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-konto-settings',

@@ -7,9 +7,6 @@ import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireModule} from '@angular/fire';
 import {StockService} from './stock.service';
 import {WebcamService} from './webcam.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -40,7 +37,6 @@ import {RegisterParticipantComponent} from './pages/register-participant/registe
 import {MatButtonModule} from '@angular/material/button';
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
-import {AngularFireMessaging} from '@angular/fire/messaging';
 import {mergeMap} from 'rxjs/operators';
 import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -48,6 +44,10 @@ import {ChartsModule} from 'ng2-charts';
 import { UploadTrackingFileComponent } from './pages/upload-tracking-file/upload-tracking-file.component';
 import { DirektSpendeComponent } from './pages/direkt-spende/direkt-spende.component';
 import { QAndAComponent } from './pages/subcomponents/q-and-a/q-and-a.component';
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {AngularFireMessaging} from '@angular/fire/compat/messaging';
 
 
 @NgModule({
