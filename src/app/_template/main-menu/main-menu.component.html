@@ -1,4 +1,4 @@
-<a class="iconText" href="https://zh11.ch" atTooltip="Zur Startseite">
+<a class="iconText" routerLink="/" atTooltip="Zur Startseite">
   <img class="logo" src="/assets/icons/logo.svg" width="30" heigth="30" alt="Logo Cevi Züri 11">
   <span class="logoName">Cevi Züri 11</span>
   <span class="logoSubname">8052 Zürich</span>
@@ -23,26 +23,21 @@
     </li>
     -->
 
-    <ng-container *ngIf=" (fireAuth.authState | async) else login">
-      <h4> Meine Sponsoren </h4>
+    <ng-container  *ngIf=" (fireAuth.authState | async) else login">
+    <h4> Meine Sponsoren </h4>
 
-      <li routerLink="/app/mitmachen" routerLinkActive="active-link">
-        <mat-icon class="nav-icon"> account_circle</mat-icon>
-        <a>zwischen Kindern wechseln</a>
-      </li>
+    <li routerLink="/app/mitmachen" routerLinkActive="active-link">
+      <mat-icon class="nav-icon"> account_circle </mat-icon>
+      <a>zwischen Kindern wechseln</a>
+    </li>
 
-      <li routerLink="/direkt-spende" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon class="nav-icon"> payments </mat-icon>
-        <a> Fixer Betrag spenden </a>
-      </li>
-
-    </ng-container>
+  </ng-container>
 
     <ng-template #login>
       <h4> Meine Sponsoren </h4>
 
       <li routerLink="/app/anmelden" routerLinkActive="active-link">
-        <mat-icon class="nav-icon"> login</mat-icon>
+        <mat-icon class="nav-icon"> login </mat-icon>
         <a> Anmelden </a>
       </li>
 
@@ -61,7 +56,7 @@
     </li>
 
 
-    <li (click)="signOut()">
+    <li (click)="signOut()" >
       <mat-icon class="nav-icon"> logout</mat-icon>
       <a routerLink="/">Abmelden</a>
     </li>
