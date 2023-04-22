@@ -12,7 +12,6 @@ import {WebcamService} from './webcam.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
-import {RouteFinderComponent} from './pages/route-finder/route-finder.component';
 import {StartPageComponent} from './pages/start-page/start-page.component';
 import {TemplateHeaderComponent} from './_template/template-header/template-header.component';
 import {MainMenuComponent} from './_template/main-menu/main-menu.component';
@@ -21,7 +20,6 @@ import {TemplateFooterComponent} from './_template/template-footer/template-foot
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {LiveFeedComponent} from './pages/live-feed/live-feed.component';
-import {RoutenOverviewComponent} from './pages/routen-overview/routen-overview.component';
 import {SponsorenOverviewComponent} from './pages/sponsoren-overview/sponsoren-overview.component';
 import {SponsorenErfassenComponent} from './pages/sponsoren-erfassen/sponsoren-erfassen.component';
 import {VeloRouteSinaiComponent} from './page/velo-route-sinai/velo-route-sinai.component';
@@ -38,12 +36,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
 import {mergeMap} from 'rxjs/operators';
-import { SimpleDialogComponent } from './dialoges/simple-dialog/simple-dialog.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import {SimpleDialogComponent} from './dialoges/simple-dialog/simple-dialog.component';
+import {SignUpComponent} from './pages/sign-up/sign-up.component';
 import {ChartsModule} from 'ng2-charts';
-import { UploadTrackingFileComponent } from './pages/upload-tracking-file/upload-tracking-file.component';
-import { DirektSpendeComponent } from './pages/direkt-spende/direkt-spende.component';
-import { QAndAComponent } from './pages/subcomponents/q-and-a/q-and-a.component';
+import {DirektSpendeComponent} from './pages/direkt-spende/direkt-spende.component';
+import {QAndAComponent} from './pages/subcomponents/q-and-a/q-and-a.component';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -55,14 +52,12 @@ import {AngularFireMessaging} from '@angular/fire/compat/messaging';
     AppComponent,
     SignInPageComponent,
     OverviewPageComponent,
-    RouteFinderComponent,
     StartPageComponent,
     TemplateHeaderComponent,
     TemplateFooterComponent,
     MainMenuComponent,
     HeaderNavComponent,
     LiveFeedComponent,
-    RoutenOverviewComponent,
     SponsorenOverviewComponent,
     SponsorenErfassenComponent,
     VeloRouteSinaiComponent,
@@ -73,7 +68,6 @@ import {AngularFireMessaging} from '@angular/fire/compat/messaging';
     DatenschutzerklaerungComponent,
     SimpleDialogComponent,
     SignUpComponent,
-    UploadTrackingFileComponent,
     DirektSpendeComponent,
     QAndAComponent
   ],
@@ -109,14 +103,14 @@ import {AngularFireMessaging} from '@angular/fire/compat/messaging';
 })
 export class AppModule {
 
-  constructor(private  messaging: AngularFireMessaging) {
+  constructor(private messaging: AngularFireMessaging) {
 
     this.messaging.requestPermission
       .pipe(mergeMap(() => {
         console.log('OK!');
         return messaging.getToken;
       })).subscribe(token => {
-        console.log(token);
+      console.log(token);
     }, err => console.log(err));
 
     this.messaging.onMessage(payload => console.log(payload))
