@@ -15,7 +15,7 @@ export class StartPageComponent implements OnInit {
 
   check_date() {
     const now = new Date().getTime();
-    const before = new Date(2021, 6, 19).getTime();
+    const before = new Date(2023, 6, 19).getTime();
     return (before - now) < 0;
   }
 
