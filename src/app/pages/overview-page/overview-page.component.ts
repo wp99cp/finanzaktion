@@ -65,8 +65,9 @@ export class OverviewPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-    if (this.routeSub)
+    if (this.routeSub) {
       this.routeSub.unsubscribe();
+    }
 
   }
 

@@ -15,10 +15,13 @@
       <a> Infos zur Finanzaktion </a>
     </li>
 
+
+    <!--
     <li routerLink="/live" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
       <mat-icon class="nav-icon"> insert_chart_outlined</mat-icon>
       <a> Spendenstand / Live Feed </a>
     </li>
+    -->
 
     <ng-container  *ngIf=" (fireAuth.authState | async) else login">
     <h4> Meine Sponsoren </h4>
