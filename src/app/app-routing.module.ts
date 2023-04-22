@@ -3,8 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {StartPageComponent} from './pages/start-page/start-page.component';
 import {LiveFeedComponent} from './pages/live-feed/live-feed.component';
 import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
-import {RouteFinderComponent} from './pages/route-finder/route-finder.component';
-import {RoutenOverviewComponent} from './pages/routen-overview/routen-overview.component';
 import {SponsorenOverviewComponent} from './pages/sponsoren-overview/sponsoren-overview.component';
 import {SponsorenErfassenComponent} from './pages/sponsoren-erfassen/sponsoren-erfassen.component';
 import {VeloRouteSinaiComponent} from './page/velo-route-sinai/velo-route-sinai.component';
@@ -15,7 +13,6 @@ import {RegisterParticipantComponent} from './pages/register-participant/registe
 import {WettbewerbComponent} from './pages/wettbewerb/wettbewerb.component';
 import {DatenschutzerklaerungComponent} from './pages/datenschutzerklaerung/datenschutzerklaerung.component';
 import {SignUpComponent} from './pages/sign-up/sign-up.component';
-import {UploadTrackingFileComponent} from './pages/upload-tracking-file/upload-tracking-file.component';
 import {DirektSpendeComponent} from './pages/direkt-spende/direkt-spende.component';
 
 const routes: Routes = [
@@ -59,20 +56,7 @@ const routes: Routes = [
     component: OauthCallbackComponent
   },
 
-  {
-    path: 'app/:partId/routen',
-    component: RoutenOverviewComponent
-  },
 
-  {
-    path: 'app/:partId/routen/erfassen',
-    component: RouteFinderComponent
-  },
-
-  {
-    path: 'app/:partId/routen/erfassen-upload',
-    component: UploadTrackingFileComponent
-  },
 
   {
     path: 'app/:partId/sponsoren',
