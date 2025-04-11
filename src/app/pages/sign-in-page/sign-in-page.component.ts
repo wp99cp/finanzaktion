@@ -34,18 +34,26 @@ export class SignInPageComponent implements OnInit {
 
   }
 
-  signIn(): void {
+  async signIn(): Promise<void> {
 
     this.location.replaceState('app/oauth-callback');
 
-    this.fireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    console.log('signIn');
+    await this.fireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(
+      (error) => {
+        console.error('Error signing in:', error);
+      }
+    );
     this.fireAuth.currentUser.then((user) => {
-
       if (user !== null) {
-
+        console.log(user);
+      } else {
+        console.log('No user is signed in.');
       }
 
-    });
+    }).catch((error) => {
+      console.error('Error signing in:', error);
+    })
 
 
   }
