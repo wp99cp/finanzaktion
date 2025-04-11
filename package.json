@@ -1,7 +1,7 @@
 {
   "name": "finak-app",
   "version": "4.0.0",
-  "copyrights": "© 2020 - 2024 Cevi Züri 11 - Finanzaktion",
+  "copyrights": "© 2020 - 2025 Cevi Züri 11 - Finanzaktion",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

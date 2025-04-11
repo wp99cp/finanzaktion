@@ -1,4 +1,4 @@
-# Finanzaktion 2024 - Cevi Züri 11
+# Finanzaktion 2025 - Cevi Züri 11
 
 --> finanzaktion.ch
 
